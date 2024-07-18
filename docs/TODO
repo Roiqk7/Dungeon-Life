@@ -1,0 +1,4 @@
+* Decide on the overall structure of the application
+* Create everything necessary to get to the basic GUI
+* Write tests
+* Create json to bin tool (and everything around it), then add it to the CMakeLists.txt so it is built with the project
