@@ -1,0 +1,31 @@
+# Specify the minimum version for CMake and the project's name
+cmake_minimum_required(VERSION 3.10)
+project(DungeonLife VERSION 1.0)
+
+# Set the C++ standard
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+# Option to toggle development mode
+option(DEVELOPMENT "Build the project in development mode" OFF)
+message(STATUS "Development mode: ${DEVELOPMENT}")
+
+# Add the executable
+add_executable(DungeonLife src/dungeonLife.cpp)
+
+# Include directories
+target_include_directories(DungeonLife PUBLIC "include/")
+
+# Add source files
+target_sources(DungeonLife PRIVATE
+        # TODO add source files here
+)
+
+# Conditionally include spdlog in development mode
+if(DEVELOPMENT)
+        # Assuming spdlog is installed system-wide or is available in a known path
+        find_package(spdlog REQUIRED)
+        target_link_libraries(DungeonLife PRIVATE spdlog::spdlog)
+        # Define DEVELOPMENT preprocessor macro
+        target_compile_definitions(DungeonLife PRIVATE DEVELOPMENT=1)
+endif()
