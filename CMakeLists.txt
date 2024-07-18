@@ -16,6 +16,11 @@ add_executable(DungeonLife src/dungeonLife.cpp)
 # Include directories
 target_include_directories(DungeonLife PUBLIC "include/")
 
+# Add SDL2
+find_package(SDL2 REQUIRED)
+target_include_directories(DungeonLife PRIVATE ${SDL2_INCLUDE_DIRS})
+target_link_libraries(DungeonLife PRIVATE ${SDL2_LIBRARIES})
+
 # Add source files
 target_sources(DungeonLife PRIVATE
         # TODO add source files here
