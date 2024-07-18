@@ -10,16 +10,22 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 option(DEVELOPMENT "Build the project in development mode" OFF)
 message(STATUS "Development mode: ${DEVELOPMENT}")
 
-# Add the executable
-add_executable(DungeonLife src/dungeonLife.cpp)
-
 # Include directories
 target_include_directories(DungeonLife PUBLIC "include/")
 
+# External dependencies
 # Add SDL2
 find_package(SDL2 REQUIRED)
 target_include_directories(DungeonLife PRIVATE ${SDL2_INCLUDE_DIRS})
 target_link_libraries(DungeonLife PRIVATE ${SDL2_LIBRARIES})
+
+# Add JsonCpp
+find_path(JSONCPP_INCLUDE_DIR json/json.h)
+find_library(JSONCPP_LIBRARY jsoncpp)
+target_include_directories(DungeonLife PRIVATE ${JSONCPP_INCLUDE_DIR})
+
+# Add the executable
+add_executable(DungeonLife src/dungeonLife.cpp)
 
 # Add source files
 target_sources(DungeonLife PRIVATE
