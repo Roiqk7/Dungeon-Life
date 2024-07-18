@@ -28,7 +28,7 @@ Notes: x
 #define SET_LOG_LEVEL_CRITICAL() spdlog::set_level(spdlog::level::critical)
 #define SET_LOG_LEVEL_OFF() spdlog::set_level(spdlog::level::off)
 
-#else
+#else // Release mode
 // Define macros as no-operation if not in development mode
 #define LOG_TRACE(...) (void)0
 #define LOG_INFO(...) (void)0
