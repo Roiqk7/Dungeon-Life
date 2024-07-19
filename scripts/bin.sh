@@ -18,14 +18,17 @@ fi
 
 # Find all JSON files in the JSON_DIR and convert them to binary
 find "$JSON_DIR" -type f -name "*.json" | while read -r json_file; do
+        # Normalize the path to ensure no double slashes
+        normalized_json_path=$(echo "$json_file" | sed 's|//|/|g')
+
         # Determine the type based on the directory name
-        # This strips the JSON_DIR path and extracts the first directory name as the type
-        type=$(echo "$json_file" | sed "s|^$JSON_DIR||" | cut -d'/' -f1)
+        # This strips the JSON_DIR path, ensures no double slashes, and extracts the first directory name as the type
+        type=$(echo "$normalized_json_path" | sed "s|^$JSON_DIR||" | cut -d'/' -f1)
 
         echo "Converting $json_file to binary with type $type..."
 
         # Call the conversion script
-        python "$CONVERT_SCRIPT" "$json_file" "$BIN_DIR" --type "$type"
+        python3 "$CONVERT_SCRIPT" "$json_file" "$BIN_DIR" --type "$type"
 done
 
 echo "Conversion completed."
