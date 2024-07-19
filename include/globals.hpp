@@ -54,6 +54,9 @@ namespace Globals
         // Constants
         namespace Constants
         {
+        // Application
+        // Command System
+                const size_t COMMAND_BATCH_SIZE = 5;                            // Number of commands to process in a batch
         // Gameplay
                 const int FPS = 60;                                             // Frames per second
         }
