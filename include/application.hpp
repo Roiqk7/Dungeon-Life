@@ -19,7 +19,7 @@ namespace Application
         // Destructor
                 ~Application();                                                 // Clean up the application
         // Application control
-                void run();                                                     // Run the application
+                void run();                                                     // Contains the main loop of the application
         private: // Methods
                 void init();                                                    // Initialize the application
                 bool checkHealth();                                             // Check the health of the application
