@@ -19,7 +19,8 @@ namespace Application
                 LOG_INFO("Application instance created.");
 
                 // Initialize the invoker
-                CommandSystem::Invoker::getInstance();
+                // TODO: Move to init() function
+                // CommandSystem::Invoker::getInstance();
 
                 // Initialize the application
                 init();
