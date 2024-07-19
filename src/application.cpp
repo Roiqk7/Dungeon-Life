@@ -16,7 +16,7 @@ namespace Application
         And checks the health of the application.
         */
         Application::Application()
-                : healthFlag(HealthFlag::Healthy)
+                : healthFlag(HealthFlag::Healthy), context(Context::System)
         {
                 // Log the creation of the application instance
                 LOG_INFO("Application instance created.");
@@ -51,6 +51,9 @@ namespace Application
         */
         void Application::run()
         {
+                // Log the entry to the main application loop
+                LOG_INFO("Application main loop started.");
+
                 // Check the health flag
                 while (healthFlag < HealthFlag::Critical)
                 {
@@ -78,6 +81,53 @@ namespace Application
         }
 
         /*
+        Manage the health of the application.
+        */
+        void Application::manageHealth()
+        {
+                // TODO: Add more health checks here
+
+                // Check the health of the application
+                checkHealth();
+
+                // Resolve the health of the application
+                resolveHealth();
+        }
+
+        /*
+        Check the health of the application.
+        */
+        void Application::checkHealth()
+        {
+                // TODO: Add more health checks here
+
+                // Log the health status of the application
+                LOG_INFO("Application health status: " +
+                        std::to_string(static_cast<int>(healthFlag)));
+        }
+
+        /*
+        Resolve the health of the application.
+
+        @return True if the health was resolved, false otherwise.
+        */
+        bool Application::resolveHealth()
+        {
+                // TODO: Add more health resolutions here
+
+                // If the health flag is critical or above, close the application
+                if (healthFlag >= HealthFlag::Critical)
+                {
+                        // Close the application
+                        close();
+
+                        return true;
+                }
+
+                return false;
+        }
+
+        /*
         Control the flow of the application.
         */
         void Application::controlFlow()
@@ -88,6 +138,9 @@ namespace Application
                 // If the command queue is empty, wait for a command
                 if (invoker.empty)
                 {
+                        // Log the waiting for a command
+                        LOG_TRACE("Command queue is empty. Waiting for a command...");
+
                         // Wait for a command to be submitted
                         invoker.waitCommand();
                 }
