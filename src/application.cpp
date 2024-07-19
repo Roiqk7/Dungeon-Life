@@ -5,6 +5,7 @@ Description: This file implements the application class which controls the entir
 */
 
 #include "../include/application.hpp"
+#include "../include/frameHandler.hpp"
 #include "../include/invoker.hpp"
 #include "../include/globals.hpp"
 
@@ -65,6 +66,9 @@ namespace Application
                 // Initialize the invoker
                 CommandSystem::Invoker::getInstance();
 
+                // Initialize the frame handler
+                FrameHandler::FrameHandler::getInstance();
+
                 // Log the initialization of the application
                 LOG_INFO("Application initialized.");
         }
@@ -74,23 +78,32 @@ namespace Application
         */
         void Application::controlFlow()
         {
-                // Wait for a command to be submitted
-                CommandSystem::Invoker::getInstance().waitCommand();
+                // Get the invoker instance
+                auto& invoker = CommandSystem::Invoker::getInstance();
+
+                // If the command queue is empty, wait for a command
+                if (invoker.empty)
+                {
+                        // Wait for a command to be submitted
+                        invoker.waitCommand();
+                }
 
                 // Process the commands in the queue
                 // If we are in a game, we process the commands while
                 // running at specified FPS.
                 if (context == Context::Gameplay)
                 {
-                        // TODO: Add code to run the game at specified FPS
-                        // Process the commands
-                        CommandSystem::Invoker::getInstance().process();
+                        // Get the remaining time until the next frame
+                        auto remainingTime = FrameHandler::FrameHandler::getInstance().getRemainingTime();
+
+                        // Process the commands in the given duration
+                        invoker.process(remainingTime);
                 }
                 // We do not care about FPS so we can handle all the commands
                 else
                 {
                         // Process the commands
-                        CommandSystem::Invoker::getInstance().process();
+                        invoker.process();
                 }
         }
 
