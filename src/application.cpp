@@ -12,7 +12,8 @@ Description: This file implements the application class which controls the entir
 namespace Application
 {
         /*
-        Constructor.
+        Constructor. Initializes the necessary components of the application.
+        And checks the health of the application.
         */
         Application::Application()
                 : healthFlag(HealthFlag::Healthy)
@@ -28,12 +29,15 @@ namespace Application
         }
 
         /*
-        Destructor.
+        Destructor. Cleans up the application and sets the shut down flag.
         */
         Application::~Application()
         {
                 // Call the invoker destructor
                 CommandSystem::Invoker::getInstance().~Invoker();
+
+                // Call the frame handler destructor
+                FrameHandler::FrameHandler::getInstance().~FrameHandler();
 
                 // Set the health flag to shut down
                 healthFlag = HealthFlag::ShutDown;
@@ -93,16 +97,21 @@ namespace Application
                 // running at specified FPS.
                 if (context == Context::Gameplay)
                 {
+                        // get the frame handler instance
+                        auto& frameHandler =
+                                FrameHandler::FrameHandler::getInstance();
+
                         // Get the remaining time until the next frame
-                        auto remainingTime = FrameHandler::FrameHandler::getInstance().getRemainingTime();
+                        auto remainingTime = frameHandler.getRemainingTime();
 
                         // Process the commands in the given duration
                         invoker.process(remainingTime);
                 }
                 // We do not care about FPS so we can handle all the commands
+                // without any restrictions.
                 else
                 {
-                        // Process the commands
+                        // Process all of the commands
                         invoker.process();
                 }
         }
