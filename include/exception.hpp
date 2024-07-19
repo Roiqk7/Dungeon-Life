@@ -21,16 +21,15 @@ namespace Exception
         */
         class Exception : public std::exception
         {
-        public: // Variables
-                bool fatal;                                                     // Flag to determine if the exception is fatal and should terminate the application
-                CommandSystem::pCommand command;                                // Follow-up command to execute to handle the exception (nullptr if none)
         public: // Methods
         // Constructors
                 explicit Exception(const std::string& message);
         // Methods
                 virtual const char* what() const noexcept override;
-        private:
-        // Variables
+        public: // Variables
+                bool fatal;                                                     // Flag to determine if the exception is fatal and should terminate the application
+                CommandSystem::pCommand command;                                // Follow-up command to execute to handle the exception (nullptr if none)
+        protected: // Variables
                 std::string message;
         };
 
