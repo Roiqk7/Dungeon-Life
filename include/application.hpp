@@ -12,6 +12,9 @@ Description: This file contains functions control the entire application.
 namespace Application
 {
         /*
+        Used to determine the health of the application. The health is
+                important to determine the state of the application and
+                how it should  be handled.
         Healthy: Indicates the application is running normally without any
                 issues.
         Degraded: Indicates the application is running but not at full capacity
@@ -33,6 +36,20 @@ namespace Application
                 Healthy = 0, Degraded, Error, Critical, ShuttingDown, ShutDown
         };
 
+        /*
+        Used to determine the context of the application. The context is
+                important to determine how the application should flow.
+        System: Indicates the context is system related and not related to
+                gameplay. Eg. Managing resources, exceptions, etc.
+        NonGameplay: Indicates the context is not related to gameplay but is
+                not system related. Eg. Loading screens, menus, etc.
+        Gameplay: Indicates the context is related to gameplay.
+        */
+        enum class Context
+        {
+                System = 0, NonGameplay, Gameplay
+        };
+
         class Application
         {
         public: // Methods
@@ -49,9 +66,9 @@ namespace Application
                 void checkHealth();                                             // Check the health of the application
                 bool resolveHealth();                                           // Resolve the health of the application
                 void close();                                                   // Close the application
-        public: // Variables
-                HealthFlag healthFlag;                                          // Flag to determine the health of the application
         private: // Variables
+                HealthFlag healthFlag;                                          // Flag to determine the health of the application
+                Context context;                                                // Context of the application
                 Exception::ExceptionHandler exceptionHandler;                   // Exception handler to handle all exceptions
         };
 }
