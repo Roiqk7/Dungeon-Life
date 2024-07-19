@@ -26,7 +26,7 @@ namespace CommandSystem
 
         enum class CommandPriority
         {
-                Regular = 0, High
+                Regular = 0, High, Critical
         };
 
         /*
