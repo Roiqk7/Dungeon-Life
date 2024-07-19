@@ -34,7 +34,9 @@ namespace CommandSystem
         */
         class Command
         {
-        public:
+        public: // Methods
+        // Constructor
+                Command(std::string name, CommandType commandType, CommandPriority priority);
         // Virtual methods
                 virtual ~Command() = default;
                 virtual void execute() = 0;
