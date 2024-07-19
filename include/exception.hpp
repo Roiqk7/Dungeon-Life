@@ -10,6 +10,7 @@ Description: This file contains the exception class which is used to handle exce
 #include <exception>
 #include <queue>
 #include <string>
+#include "command.hpp"
 
 namespace Exception
 {
@@ -20,7 +21,10 @@ namespace Exception
         */
         class Exception : public std::exception
         {
-        public:
+        public: // Variables
+                bool fatal;                                                     // Flag to determine if the exception is fatal and should terminate the application
+                CommandSystem::pCommand command;                                // Follow-up command to execute to handle the exception (nullptr if none)
+        public: // Methods
         // Constructors
                 explicit Exception(const std::string& message);
         // Methods
