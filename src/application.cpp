@@ -18,12 +18,11 @@ namespace Application
                 // Log the creation of the application instance
                 LOG_INFO("Application instance created.");
 
-                // Initialize the invoker
-                // TODO: Move to init() function
-                // CommandSystem::Invoker::getInstance();
-
                 // Initialize the application
                 init();
+
+                // Check the health of the application
+                checkHealth();
         }
 
         /*
@@ -33,6 +32,9 @@ namespace Application
         {
                 // Call the invoker destructor
                 CommandSystem::Invoker::getInstance().~Invoker();
+
+                // Set the health flag to shut down
+                healthFlag = HealthFlag::ShutDown;
 
                 // Log the destruction of the application instance
                 LOG_INFO("Application instance destroyed.");
@@ -52,5 +54,29 @@ namespace Application
                         // Control the flow of the application
                         controlFlow();
                 }
+        }
+
+        /*
+        Initialize the application.
+        */
+        void Application::init()
+        {
+                // Initialize the invoker
+                CommandSystem::Invoker::getInstance();
+
+                // Log the initialization of the application
+                LOG_INFO("Application initialized.");
+        }
+
+        /*
+        Close the application.
+        */
+        void Application::close()
+        {
+                // Log the closing of the application
+                LOG_INFO("Application closing.");
+
+                // Set the health flag to shutting down
+                healthFlag = HealthFlag::ShuttingDown;
         }
 }
