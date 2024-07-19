@@ -26,7 +26,7 @@ install_dependencies()
         fi
 
         # Install dependencies using Homebrew
-        brew install cmake
+        brew install cmake gcc python
 }
 
 # Detect operating system using uname
