@@ -26,10 +26,11 @@ namespace Application
                 and will be terminated as soon as possible.
         ShuttingDown: Indicates the application is in the process of shutting
                 down and will be terminated.
+        ShutDown: Indicates the application has been terminated.
         */
         enum class HealthFlag
         {
-                Healthy = 0, Degraded, Error, Critical, ShuttingDown
+                Healthy = 0, Degraded, Error, Critical, ShuttingDown, ShutDown
         };
 
         class Application
@@ -47,7 +48,7 @@ namespace Application
                 void manageHealth();                                            // Manage the health of the application
                 void checkHealth();                                             // Check the health of the application
                 bool resolveHealth();                                           // Resolve the health of the application
-                void exit();                                                    // Exit the application
+                void close();                                                   // Close the application
         public: // Variables
                 HealthFlag healthFlag;                                          // Flag to determine the health of the application
         private: // Variables
