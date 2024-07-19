@@ -43,7 +43,7 @@ namespace CommandSystem
                 std::string getName() const;
                 CommandType getCommandType() const;
                 CommandPriority getPriority() const;
-        protected:
+        protected: // Variables
                 std::string m_name;                                             // Name of the command
                 CommandType m_commandType;                                      // Command type
                 CommandPriority m_priority;                                     // Command priority
