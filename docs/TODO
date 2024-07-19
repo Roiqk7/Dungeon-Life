@@ -1,4 +1,13 @@
-* Decide on the overall structure of the application
-* Create everything necessary to get to the basic GUI
-* Write tests
-* Create json to bin tool (and everything around it), then add it to the CMakeLists.txt so it is built with the project
+[ ] Decide on the overall structure of the application
+[ ] Create everything necessary to get to the basic GUI
+        [x] Create basic invoker which processes commands
+                [ ] If the processing is not sufficient, induce other overhead to improve eg.: merging commands, sorting them, etc.
+        [ ] Create basic GUI
+                [ ] Start with constant dimensions with relative in mind
+                [ ] Decide on the json format (used for scenes aka it is a recipe for the renderer)
+                [ ] Write json to binary tool
+                [ ] Write binary interpreter
+                [ ] Create a json scene format
+                        [ ] Write renderer for the scene format
+[ ] Write tests
+[ ] Create json to bin tool (and everything around it), then add it to the CMakeLists.txt so it is built with the project
