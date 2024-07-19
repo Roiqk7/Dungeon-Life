@@ -40,9 +40,9 @@ namespace CommandSystem
                 virtual void execute() = 0;
         // Non-virtual methods
         // Getters
-                std::string getName() const;
-                CommandType getCommandType() const;
-                CommandPriority getPriority() const;
+                std::string getName() const;                                    // Get the name of the command
+                CommandType getCommandType() const;                             // Get the type of the command
+                CommandPriority getPriority() const;                            // Get the priority of the command
         protected: // Variables
                 std::string m_name;                                             // Name of the command
                 CommandType m_commandType;                                      // Command type

@@ -15,9 +15,9 @@ namespace Application
         {
         public: // Methods
         // Constructor
-                Application();
+                Application();                                                  // Initialize the application
         // Destructor
-                ~Application();
+                ~Application();                                                 // Clean up the application
         // Application control
                 void run();                                                     // Run the application
         private: // Methods
