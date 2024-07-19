@@ -24,7 +24,7 @@ namespace CommandSystem
         class Invoker                                                           // Singleton class
         {
         public: // Variables
-                bool run;                                                       // Flag which indicates if the invoker should keep running
+                bool empty;                                                     // Flag to check if there are commands to process
         public: // Methods
         // Destructor
                 ~Invoker();
