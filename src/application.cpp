@@ -6,6 +6,7 @@ Description: This file implements the application class which controls the entir
 
 #include "../include/application.hpp"
 #include "../include/invoker.hpp"
+#include "../include/globals.hpp"
 
 namespace Application
 {
@@ -41,7 +42,7 @@ namespace Application
         }
 
         /*
-        Run the application.
+        Run the application. This is the main loop of the application.
         */
         void Application::run()
         {
@@ -66,6 +67,31 @@ namespace Application
 
                 // Log the initialization of the application
                 LOG_INFO("Application initialized.");
+        }
+
+        /*
+        Control the flow of the application.
+        */
+        void Application::controlFlow()
+        {
+                // Wait for a command to be submitted
+                CommandSystem::Invoker::getInstance().waitCommand();
+
+                // Process the commands in the queue
+                // If we are in a game, we process the commands while
+                // running at specified FPS.
+                if (context == Context::Gameplay)
+                {
+                        // TODO: Add code to run the game at specified FPS
+                        // Process the commands
+                        CommandSystem::Invoker::getInstance().process();
+                }
+                // We do not care about FPS so we can handle all the commands
+                else
+                {
+                        // Process the commands
+                        CommandSystem::Invoker::getInstance().process();
+                }
         }
 
         /*
