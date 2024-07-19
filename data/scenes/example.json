@@ -1,0 +1,35 @@
+{
+        "sceneName": "example",
+        "dimensions": { "width": 1000, "height": 1000 },
+        "position": { "x": 0, "y": 0 },
+        "elements": [
+                {
+                        "type": "image",
+                        "name": "background",
+                        "path": "some/path/to/image.jpg",
+                        "dimensions": { "width": 1000, "height": 1000 },
+                        "position": {
+                                "type": "absolute",
+                                "x": 0, "y": 0
+                        }
+                },
+                {
+                        "type": "sprite",
+                        "name": "player",
+                        "dimensions": { "width": 50, "height": 50 },
+                        "position": { "type": "centered" },
+                        "components": [
+                                { "type": "SpriteRenderer", "spritePath": "some/path/to/player.png" }
+                        ]
+                },
+                {
+                        "type": "text",
+                        "name": "score",
+                        "text": "Score:",
+                        "position": {
+                                "type": "absolute",
+                                "x": 0, "y": 0
+                        }
+                }
+        ]
+}
