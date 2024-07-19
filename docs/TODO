@@ -8,6 +8,10 @@
                 [x] Create the main loop
         [ ] Add basic user input (so you can close the app)
                 [ ] User input handler (may require SDL)
+        [ ] Finish the json/bin system
+                [x] Create a json to bin converter
+                [ ] Create tests for the converter
+        [ ] Create the basic GUI
         [ ] Create basic GUI
                 [ ] Start with constant dimensions with relative in mind
                 [ ] Decide on the json format (used for scenes aka it is a recipe for the renderer)
@@ -16,4 +20,4 @@
                 [ ] Create a json scene format
                         [ ] Write renderer for the scene format
 [ ] Write tests
-[ ] Create json to bin tool (and everything around it), then add it to the CMakeLists.txt so it is built with the project
+[ ] Improve documentation
