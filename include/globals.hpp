@@ -9,6 +9,8 @@ Notes: x
 #ifndef GLOBALS_HPP
 #define GLOBALS_HPP
 
+#include <cstddef>
+
 #ifdef DEVELOPMENT
 // Include the spdlog library for logging
 #include <spdlog/spdlog.h>
@@ -49,7 +51,15 @@ Notes: x
 
 namespace Globals
 {
-
+        // Constants
+        namespace Constants
+        {
+        // System
+        // Command System
+                const size_t COMMAND_BATCH_SIZE = 5;                            // Number of commands to process in a batch
+        // Gameplay
+                const int FPS = 60;                                             // Frames per second
+        }
 }
 
 #endif // !GLOBALS_HPP
