@@ -1,3 +1,13 @@
+"""
+Date: 18/07/2024
+
+Description: This script converts a JSON file to a binary file based on the type of JSON data.
+
+Usage: python jsonToBin.py <json_file> <binary_folder> --type <type>
+
+Note: Has not yet been tested. May require additional modifications. Created by the copilot.
+"""
+
 import argparse
 import json
 import os
