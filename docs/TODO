@@ -2,6 +2,10 @@
 [ ] Create everything necessary to get to the basic GUI
         [x] Create basic invoker which processes commands
                 [ ] If the processing is not sufficient, induce other overhead to improve eg.: merging commands, sorting them, etc.
+        [ ] Create the basic application flow
+                [ ] Decide on the overall app flow
+                [ ] Finish the application init
+                [ ] Create the main loop
         [ ] Create basic GUI
                 [ ] Start with constant dimensions with relative in mind
                 [ ] Decide on the json format (used for scenes aka it is a recipe for the renderer)
