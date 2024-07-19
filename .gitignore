@@ -33,5 +33,6 @@
 
 # Custom
 .vscode/
+bin/
 build/
 lib/
