@@ -21,3 +21,4 @@
                         [ ] Write renderer for the scene format
 [ ] Write tests
 [ ] Improve documentation
+[ ] Fix scripts (the args may be wrong but im not sure)
