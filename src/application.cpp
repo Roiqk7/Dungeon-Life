@@ -85,7 +85,7 @@ namespace Application
         */
         void Application::manageHealth()
         {
-                // TODO: Add more health checks here
+                // TODO: Add assets health and game stats checks
 
                 // Check the health of the application
                 checkHealth();
