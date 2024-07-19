@@ -34,7 +34,7 @@ namespace CommandSystem
         // Command handling
                 void waitCommand();                                             // Sleep until a command is submitted
                 void submit(pCommand command);                                  // Submit a command to the invoker
-                void process();                                                 // Process the commands in the queue
+                void process();                                                 // Process all the commands in the queue
                 void process(const std::chrono::microseconds& duration);        // Process the commands in the queue given a duration
         private: // Methods
                 void init();                                                    // Initialize the invoker
