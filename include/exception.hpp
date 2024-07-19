@@ -12,6 +12,10 @@ Description: This file contains the exception class which is used to handle exce
 #include <string>
 #include "command.hpp"
 
+#ifdef DEVELOPMENT
+#include <spdlog/spdlog.h>
+#endif
+
 namespace Exception
 {
         /*
@@ -23,9 +27,18 @@ namespace Exception
         {
         public: // Methods
         // Constructors
-                explicit Exception(const std::string& message);
+                explicit Exception(const std::string& message);                 // Constructor with message
+                #ifdef DEVELOPMENT
+                explicit Exception(const std::string& message,
+                        spdlog::level::level_enum logLevel);                    // Constructor with message and log level (for development)
+                #endif
         // Methods
                 virtual const char* what() const noexcept override;
+        protected: // Methods
+                #ifdef DEVELOPMENT
+                void log(spdlog::level::level_enum logLevel
+                        = spdlog::level::warning);                            // Log the exception (warning by default)
+                #endif
         public: // Variables
                 bool fatal;                                                     // Flag to determine if the exception is fatal and should terminate the application
                 CommandSystem::pCommand command;                                // Follow-up command to execute to handle the exception (nullptr if none)
