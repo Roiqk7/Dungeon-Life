@@ -74,7 +74,7 @@ namespace Application
         void Application::close()
         {
                 // Log the closing of the application
-                LOG_INFO("Application closing.");
+                LOG_INFO("Application is closing...");
 
                 // Set the health flag to shutting down
                 healthFlag = HealthFlag::ShuttingDown;
