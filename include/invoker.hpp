@@ -9,6 +9,7 @@ Notes: Follows the command pattern.
 #ifndef INVOKER_HPP
 #define INVOKER_HPP
 
+#include <chrono>
 #include <condition_variable>
 #include <memory>
 #include <mutex>
@@ -28,12 +29,13 @@ namespace CommandSystem
                 ~Invoker();
         // Singleton
                 static Invoker& getInstance();
-                Invoker(const Invoker&) = delete;                              // Delete copy constructor
-                Invoker& operator=(const Invoker&) = delete;                   // Delete copy assignment operator
+                Invoker(const Invoker&) = delete;                               // Delete copy constructor
+                Invoker& operator=(const Invoker&) = delete;                    // Delete copy assignment operator
         // Command handling
-                void waitCommand();                                            // Sleep until a command is submitted
-                void submit(pCommand command);                                 // Submit a command to the invoker
-                void process();                                                // Process the commands in the queue
+                void waitCommand();                                             // Sleep until a command is submitted
+                void submit(pCommand command);                                  // Submit a command to the invoker
+                void process();                                                 // Process the commands in the queue
+                void process(const std::chrono::microseconds& duration);        // Process the commands in the queue given a duration
         private: // Methods
                 void init();                                                    // Initialize the invoker
                 void clean();                                                   // Clean up the invoker
