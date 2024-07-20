@@ -11,9 +11,7 @@ int main()
 {
         // Set log level
         #ifdef DEVELOPMENT
-                SET_LOG_LEVEL_DEBUG();
-        #else // Release
-                SET_LOG_LEVEL_ERROR();
+        SET_LOG_LEVEL_DEBUG();
         #endif
 
         // Create the application
