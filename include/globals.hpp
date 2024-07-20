@@ -66,7 +66,7 @@ namespace Globals
         */
         enum class Type
         {
-                Size = 4, None = 0, UserInput, System, Exception
+                Size = 4, None = 0, UserInput, Game, System, Exception
         };
 
         /*
