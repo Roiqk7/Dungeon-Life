@@ -12,7 +12,7 @@ Description: This file contains the priority queue class template which is respo
 #include <queue>
 #include <vector>
 
-namespace Utility
+namespace Tool
 {
 	/*
 	The PriorityQueue class template is responsible for storing elements in a priority order.
