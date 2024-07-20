@@ -37,10 +37,10 @@ namespace ThreadManager
                 ThreadManager& operator=(const ThreadManager&) = delete;        // Delete copy assignment operator
         // Thread handling
                 void submit(pTask task);                                        // Submit a task to the thread manager
-                void shutDown();                                                // Shut down the thread manager
         private: // Methods
         // Thread handling
                 void worker();                                                  // Worker thread function
+                void shutDown();                                                // Shut down the thread manager
         protected: // Constructor
                 ThreadManager();                                                // Constructor
         private: // Variables
