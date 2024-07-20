@@ -13,7 +13,7 @@ int main()
         SET_LOG_LEVEL_DEBUG();
         #endif
 
-        // Create the application
+        // Create the application object
         Application::Application application;
 
         // Run the application
