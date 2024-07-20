@@ -37,7 +37,7 @@ namespace Exception
         protected: // Methods
                 #ifdef DEVELOPMENT
                 void log(spdlog::level::level_enum logLevel
-                        = spdlog::level::warning);                            // Log the exception (warning by default)
+                        = spdlog::level::warning);                              // Log the exception (warning by default)
                 #endif
         public: // Variables
                 bool fatal;                                                     // Flag to determine if the exception is fatal and should terminate the application
