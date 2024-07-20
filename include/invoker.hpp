@@ -41,12 +41,7 @@ namespace CommandSystem
                 void clean();                                                   // Clean up the invoker
         protected: // Constructor
                 Invoker();                                                      // Constructor
-        public: // Variables
-                bool empty;                                                     // Flag to check if there are commands to process
         private: // Variables
-        // Command system
-                std::mutex m_mutex;                                             // Mutex for the command queue
-                std::condition_variable m_conditionVariable;                    // Condition variable for the command queue
         // Command handling
                 CommandQueue m_commandQueue;                                    // Queue of commands ordered by priority
         };
