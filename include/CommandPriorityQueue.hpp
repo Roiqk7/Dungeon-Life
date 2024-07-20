@@ -16,6 +16,10 @@ Description: This file contains the command queue class which is responsible for
 
 namespace CommandSystem
 {
+        /*
+        The command queue class is responsible for storing commands. It is a thread-safe queue.
+                The commands are sorted based on priority and chronology.
+        */
         class CommandPriorityQueue
         {
         public: // Methods

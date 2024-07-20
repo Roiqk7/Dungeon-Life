@@ -50,6 +50,12 @@ namespace Application
                 System = 0, NonGameplay, Gameplay
         };
 
+        /*
+        The application class controls the entire application. It is responsible
+                for managing the health of the application, controlling the flow
+                of the application, and handling exceptions via the exception
+                handler.
+        */
         class Application
         {
         public: // Methods

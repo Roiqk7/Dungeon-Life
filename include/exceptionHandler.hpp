@@ -11,6 +11,9 @@ Description: This file contains the exception handler class which is used to han
 
 namespace Exception
 {
+        /*
+        The exception handler class is used to handle all exceptions in the application.
+        */
         class ExceptionHandler
         {
         public: // Methods
