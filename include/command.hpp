@@ -24,9 +24,15 @@ namespace CommandSystem
                 None = 0, UserInput, System, Exception
         };
 
+        /*
+        Used to sort the commands based on priority in a command priority queue.
+
+        Note: The elements can be used as indices in the array of queues in the command priority queue.
+        Note2: Size is used to determine the size of the array of queues.
+        */
         enum class CommandPriority
         {
-                Regular = 0, High, Critical
+                Size = 3, Regular = 0, High, Critical
         };
 
         /*
@@ -52,6 +58,7 @@ namespace CommandSystem
         };
 
         using pCommand = std::unique_ptr<Command>;                              // Alias for unique_ptr<Command>
+        using CommandQueue = std::queue<pCommand>;                              // Alias for queue<pCommand>
 
         /*
         Comparison operator for commands based on priority.
