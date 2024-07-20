@@ -10,6 +10,7 @@ Description: This file defines the thread manager class which is responsible for
 #include <condition_variable>
 #include <functional>
 #include <future>
+#include <map>
 #include <mutex>
 #include <queue>
 #include <thread>
@@ -20,27 +21,36 @@ Description: This file defines the thread manager class which is responsible for
 
 namespace ThreadManager
 {
+        using namespace Globals;
+
         /*
         Manages threads for the application.
         */
         class ThreadManager
         {
         public: // Methods
-        // Constructor
-                ThreadManager();                                                // Constructor
         // Destructor
                 ~ThreadManager();                                               // Destructor
+        // Singleton
+                static ThreadManager& getInstance();
+                ThreadManager(const ThreadManager&) = delete;                   // Delete copy constructor
+                ThreadManager& operator=(const ThreadManager&) = delete;        // Delete copy assignment operator
         // Thread handling
                 void submit(pTask task);                                        // Submit a task to the thread manager
                 void shutDown();                                                // Shut down the thread manager
         private: // Methods
         // Thread handling
                 void worker();                                                  // Worker thread function
+        protected: // Constructor
+                ThreadManager();                                                // Constructor
         private: // Variables
-                std::vector<std::thread> m_threads;                             // Vector to hold worker threads
+        // Thread handling
+                std::map<Type, std::thread> m_threadPools;                      // Map of threads for each type
+                size_t m_maxThreads;                                            // Maximum number of threads available
+        // Tasks
                 Tool::PriorityQueue<Task> m_queue;                              // Priority queue of tasks
+        // System
                 bool m_shutDown;                                                // Flag to indicate if the thread manager should shut down
-
         };
 }
 
