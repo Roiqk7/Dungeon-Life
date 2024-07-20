@@ -30,7 +30,7 @@ namespace ThreadManager
         {
         public: // Methods
         // Destructor
-                ~ThreadManager();                                               // Destructor
+                ~ThreadManager();                                               // Destructor which is responsible for shutting down all threads
         // Singleton
                 static ThreadManager& getInstance();
                 ThreadManager(const ThreadManager&) = delete;                   // Delete copy constructor
