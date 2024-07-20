@@ -12,22 +12,37 @@ if [ ! -d "build" ]; then
         mkdir build
 fi
 
-# Check if the current directory is not already 'build'
-if [[ $(basename "$PWD") != "build" ]]; then
-        echo "Moving to the build directory..."
-        cd build
+# Initialize CMake flags
+cmake_flags=""
+
+# Parse arguments
+for arg in "$@"
+do
+        # Check the argument(s) passed to the script
+        case $arg in
+                dev)
+                        echo "Configuring the project with CMake in development mode..."
+                        cmake_flags+="-DDEVELOPMENT=ON "
+                        ;;
+                test)
+                        echo "Configuring the project with CMake for testing..."
+                        cmake_flags+="-DTEST=ON "
+                        ;;
+                *)
+                        # Handle unknown options
+                        echo "Unknown option: $arg"
+                        ;;
+        esac
+done
+
+# If no flags were added, configure in release mode by default
+if [ -z "$cmake_flags" ]; then
+        echo "Configuring the project with CMake in release mode..."
+        cmake_flags="-DDEVELOPMENT=OFF -DTEST=OFF"
 fi
 
-# Check if the script was called with the 'dev' argument
-if [ "$1" == "dev" ]; then
-        echo "Configuring the project with CMake in development mode..."
-        # Configure the project with CMake in development mode
-        cmake .. -DDEVELOPMENT=ON
-else
-        echo "Configuring the project with CMake in release mode..."
-        # Configure the project with CMake in release mode
-        cmake .. -DDEVELOPMENT=OFF
-fi
+# Configure the project with CMake
+cmake .. $cmake_flags
 
 echo "Building the project..."
 
