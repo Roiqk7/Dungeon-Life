@@ -9,7 +9,6 @@ Description: This file contains the main function which is the entry point of th
 
 int main()
 {
-        // Set log level
         #ifdef DEVELOPMENT
         SET_LOG_LEVEL_DEBUG();
         #endif
