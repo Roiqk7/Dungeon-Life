@@ -14,6 +14,9 @@ if [ ! -d "build" ]; then
         mkdir build
 fi
 
+# Move to the build directory
+cd build
+
 # Initialize CMake flags
 cmake_flags=""
 
