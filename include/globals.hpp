@@ -62,6 +62,14 @@ namespace Globals
         }
 
         /*
+        Helps to determine the type of data. (commands, tasks etc.)
+        */
+        enum class Type
+        {
+                None = 0, UserInput, System, Exception
+        };
+
+        /*
         Helps to determine priority of various data types. (commands, tasks etc.)
         */
         enum class Priority
