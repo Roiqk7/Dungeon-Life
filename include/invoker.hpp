@@ -15,7 +15,7 @@ Notes: Follows the command pattern.
 #include <mutex>
 #include "command.hpp"
 #include "globals.hpp"
-#include "CommandPriorityQueue.hpp"
+#include "priorityQueue.hpp"
 
 namespace CommandSystem
 {
@@ -45,7 +45,7 @@ namespace CommandSystem
                 void processCommand(pCommand command);                          // Process a command
         private: // Variables
         // Command handling
-                CommandPriorityQueue m_commandQueue;                            // Command queue
+                Tool::PriorityQueue<pCommand> m_queue;                          // Priority queue to hold commands
         };
 }
 
