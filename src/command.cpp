@@ -37,7 +37,8 @@ namespace CommandSystem
                         m_function, m_priority);
 
                 // Submit the task to the thread manager
-                ThreadManager::ThreadManager::getInstance().submit(std::move(task));
+                ThreadManager::ThreadManager::getInstance().submit(
+                        std::move(task));
         }
 
         /*
