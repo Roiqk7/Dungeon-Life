@@ -28,6 +28,8 @@ namespace CommandSystem
                 pCommand pop();                                                 // Pop a command from the queue
                 bool empty() const;                                             // Check if the queue is empty
         private: // Methods
+                size_t getTopQueueIndex() const;                                // Get the index of the queue with the highest priority that is not empty (returns SIZE_T_MAX if all queues are empty)
+        private: // Variables
                 mutable std::mutex mutex;                                       // Mutex to protect the queue (thread-safe)
                 std::condition_variable notEmptyCondition;                      // Condition variable to notify when the queue is not empty
                 std::array<CommandQueue,
