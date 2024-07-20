@@ -13,9 +13,9 @@ Notes: Follows the command pattern.
 #include <condition_variable>
 #include <memory>
 #include <mutex>
-#include <queue>
 #include "command.hpp"
 #include "globals.hpp"
+#include "CommandPriorityQueue.hpp"
 
 namespace CommandSystem
 {
@@ -36,14 +36,14 @@ namespace CommandSystem
                 void submit(pCommand command);                                  // Submit a command to the invoker
                 void process();                                                 // Process all the commands in the queue
                 void process(const std::chrono::microseconds& duration);        // Process the commands in the queue given a duration
-        private: // Methods
-                void init();                                                    // Initialize the invoker
-                void clean();                                                   // Clean up the invoker
         protected: // Constructor
                 Invoker();                                                      // Constructor
+        private: // Methods
+        // Command handling
+                void processCommand(pCommand command);                          // Process a command
         private: // Variables
         // Command handling
-                CommandQueue m_commandQueue;                                    // Queue of commands ordered by priority
+                CommandPriorityQueue m_commandQueue;                            // Command queue
         };
 }
 
