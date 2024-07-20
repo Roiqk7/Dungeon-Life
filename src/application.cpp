@@ -8,6 +8,7 @@ Description: This file implements the application class which controls the entir
 #include "../include/frameHandler.hpp"
 #include "../include/invoker.hpp"
 #include "../include/globals.hpp"
+#include "../include/threadManager.hpp"
 
 namespace Application
 {
@@ -75,6 +76,9 @@ namespace Application
 
                 // Initialize the frame handler
                 FrameHandler::FrameHandler::getInstance();
+
+                // Initialize the thread manager
+                ThreadManager::ThreadManager::getInstance();
 
                 // Log the initialization of the application
                 LOG_INFO("Application initialized.");
