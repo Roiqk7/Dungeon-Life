@@ -60,6 +60,14 @@ namespace Globals
         // Gameplay
                 const int FPS = 60;                                             // Frames per second
         }
+
+        /*
+        Helps to determine priority of various data types. (commands, tasks etc.)
+        */
+        enum class Priority
+        {
+                Regular = 0, High, Critical
+        };
 }
 
 #endif // !GLOBALS_HPP
