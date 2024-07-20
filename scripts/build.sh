@@ -36,6 +36,7 @@ do
                 *)
                         # Handle unknown options
                         echo "Unknown option: $arg"
+                        echo "Usage: ./scripts/build.sh [dev] [test]"
                         ;;
         esac
 done
