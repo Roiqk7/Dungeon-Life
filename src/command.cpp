@@ -8,6 +8,8 @@ Notes: Follows the command pattern.
 
 #include "../include/command.hpp"
 #include "../include/globals.hpp"
+#include "../include/task.hpp"
+#include "../include/threadManager.hpp"
 
 namespace CommandSystem
 {
@@ -23,6 +25,20 @@ namespace CommandSystem
         */
         Command::Command(std::string name, Type type, Priority priority)
                 : m_name(name), m_type(type), m_priority(priority) {}
+
+        /*
+        Execute the command function.
+        */
+        void Command::execute()
+        {
+                // Create the task
+                ThreadManager::pTask task =
+                        std::make_unique<ThreadManager::Task>(
+                        m_function, m_priority);
+
+                // Submit the task to the thread manager
+                ThreadManager::ThreadManager::getInstance().submit(std::move(task));
+        }
 
         /*
         Get the name of the command.
@@ -52,5 +68,17 @@ namespace CommandSystem
         Priority Command::getPriority() const
         {
                 return m_priority;
+        }
+
+        /*
+        Less than operator.
+
+        @param other: The other command to compare to.
+
+        @return True if this command has a lower priority than the other command, false otherwise.
+        */
+        bool Command::operator<(const Command& other) const
+        {
+                return m_priority < other.m_priority;
         }
 }
