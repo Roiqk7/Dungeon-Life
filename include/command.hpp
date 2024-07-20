@@ -58,13 +58,10 @@ namespace CommandSystem
 
         Note: Needs to be separate from the Command class because we are comparing unique_ptrs.
         */
-        struct CommandCompare
+        struct CommandComparator
         {
                 bool operator()(const pCommand& lhs, const pCommand& rhs) const;
         };
-
-        using CommandQueue = std::priority_queue<std::unique_ptr<Command>,
-                std::vector<std::unique_ptr<Command>>, CommandCompare>;         // Priority queue for commands
 }
 
 #endif // !COMMAND_HPP
