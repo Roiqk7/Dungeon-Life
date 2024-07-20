@@ -25,12 +25,16 @@ namespace ThreadManager
                 Task(std::function<void()> task, Priority priority);            // Constructor
         // Getters
                 Priority getPriority() const;                                   // Get the priority of the task
+                Type getType() const;                                           // Get the type of the task
         // Operators
                 bool operator<(const Task& other) const;                        // Less than operator
         public: // Variables
                 std::function<void()> m_task;                                   // Task to be executed
+                Type m_type;                                                    // Type of the task
                 Priority m_priority;                                            // Priority of the task
         };
+
+        using pTask = std::unique_ptr<Task>;                                    // Alias for unique_ptr<Task>
 }
 
 #endif // !TASK_HPP
