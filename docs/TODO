@@ -6,6 +6,7 @@
                 [x] Decide on the overall app flow
                 [x] Finish the application init
                 [x] Create the main loop
+        [ ] Integrate the thread system
         [ ] Add basic user input (so you can close the app)
                 [ ] User input handler (may require SDL)
         [ ] Finish the json/bin system
@@ -20,5 +21,8 @@
                 [ ] Create a json scene format
                         [ ] Write renderer for the scene format
 [ ] Write tests
+        [ ] Add test arguments (and test macro)
+        [ ] Add test to cmake
+        [ ] Integrate test system logic
 [ ] Improve documentation
 [ ] Fix scripts (the args may be wrong but im not sure)
