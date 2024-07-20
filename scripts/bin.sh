@@ -3,6 +3,8 @@
 # Exit immediately if a command exits with a non-zero status.
 set -e
 
+echo "Converting JSON files to binary..."
+
 # Define the directory containing the JSON files and the output directory for binary files
 JSON_DIR="data/"
 BIN_DIR="bin/"

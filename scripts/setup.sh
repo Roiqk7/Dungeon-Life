@@ -3,6 +3,8 @@
 # Exit immediately if a command exits with a non-zero status.
 set -e
 
+echo "Setting up the project..."
+
 # Function to check if Homebrew is installed and install it if it's not
 install_homebrew()
 {
@@ -18,6 +20,8 @@ install_homebrew()
 # Function to install dependencies using Homebrew
 install_dependencies()
 {
+        echo "Installing dependencies using Homebrew..."
+
         # Install dependencies using Homebrew
         brew install cmake gcc googletest jsoncpp python spdlog
 }

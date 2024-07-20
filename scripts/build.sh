@@ -3,6 +3,8 @@
 # Exit immediately if a command exits with a non-zero status.
 set -e
 
+echo "Preparing to build the project..."
+
 # Save the current directory
 original_dir=$(pwd)
 

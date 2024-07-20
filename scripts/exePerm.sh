@@ -3,6 +3,8 @@
 # Exit immediately if a command exits with a non-zero status.
 set -e
 
+echo "Adding execute permissions to all scripts in the scripts directory..."
+
 # Directory containing the scripts
 SCRIPTS_DIR="./scripts"
 
