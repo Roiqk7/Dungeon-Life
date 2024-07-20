@@ -35,10 +35,10 @@ namespace CommandSystem
         void Invoker::waitCommand()
         {
                 // Lock the mutex
-                std::unique_lock<std::mutex> lock(m_commandQueue.mutex);
+                std::unique_lock<std::mutex> lock(m_queue.mutex);
 
                 // Wait until the queue is not empty
-                m_commandQueue.notEmptyCondition.wait(lock, [this] { return !m_commandQueue.empty(); });
+                m_queue.notEmptyCondition.wait(lock, [this] { return !m_queue.empty(); });
         }
 
         /*
@@ -49,7 +49,7 @@ namespace CommandSystem
         void Invoker::submit(pCommand command)
         {
                 // Push the command to the queue
-                m_commandQueue.push(std::move(command));
+                m_queue.push(std::move(command));
         }
 
         /*
@@ -58,10 +58,10 @@ namespace CommandSystem
         void Invoker::process()
         {
                 // While the queue is not empty
-                while(!m_commandQueue.empty())
+                while(!m_queue.empty())
                 {
                         // Process the command
-                        processCommand(m_commandQueue.pop());
+                        processCommand(m_queue.pop());
                 }
         }
 
@@ -77,10 +77,10 @@ namespace CommandSystem
 
                 // While the queue is not empty and the duration has not elapsed
                 // TODO: Make the duration check into a function
-                while(!m_commandQueue.empty() && std::chrono::high_resolution_clock::now() - startTime < duration)
+                while(!m_queue.empty() && std::chrono::high_resolution_clock::now() - startTime < duration)
                 {
                         // Process the command
-                        processCommand(m_commandQueue.pop());
+                        processCommand(m_queue.pop());
                 }
         }
 
@@ -91,7 +91,7 @@ namespace CommandSystem
         */
         bool Invoker::empty() const
         {
-                return m_commandQueue.empty();
+                return m_queue.empty();
         }
 
         /*
