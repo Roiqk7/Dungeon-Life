@@ -8,6 +8,7 @@ Description: This file contains functions control the entire application.
 #define APPLICATION_HPP
 
 #include "exceptionHandler.hpp"
+#include "threadManager.hpp"
 
 namespace Application
 {
@@ -76,6 +77,7 @@ namespace Application
                 HealthFlag healthFlag;                                          // Flag to determine the health of the application
                 Context context;                                                // Context of the application
                 Exception::ExceptionHandler exceptionHandler;                   // Exception handler to handle all exceptions
+                ThreadManager::ThreadManager threadManager;                     // Thread manager to manage threads used by the application
         };
 }
 
