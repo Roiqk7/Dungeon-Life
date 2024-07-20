@@ -16,6 +16,8 @@ Notes: Follows the command pattern.
 
 namespace CommandSystem
 {
+        using namespace Globals;
+
         /*
         Command types are helpful for the invoker to correctly process the commands in the queue.
         */
@@ -25,24 +27,13 @@ namespace CommandSystem
         };
 
         /*
-        Used to sort the commands based on priority in a command priority queue.
-
-        Note: The elements can be used as indices in the array of queues in the command priority queue.
-        Note2: Size is used to determine the size of the array of queues.
-        */
-        enum class CommandPriority
-        {
-                Size = 3, Regular = 0, High, Critical
-        };
-
-        /*
         The command class is an abstract class which is inherited by all the commands.
         */
         class Command
         {
         public: // Methods
         // Constructor
-                Command(std::string name, CommandType commandType, CommandPriority priority);
+                Command(std::string name, CommandType commandType, Priority priority);
         // Virtual methods
                 virtual ~Command() = default;
                 virtual void execute() = 0;
@@ -50,11 +41,13 @@ namespace CommandSystem
         // Getters
                 std::string getName() const;                                    // Get the name of the command
                 CommandType getCommandType() const;                             // Get the type of the command
-                CommandPriority getPriority() const;                            // Get the priority of the command
+                Priority getPriority() const;                                   // Get the priority of the command
+        // Operators
+                bool operator<(const Command& other) const;                     // Less than operator
         protected: // Variables
                 std::string m_name;                                             // Name of the command
                 CommandType m_commandType;                                      // Command type
-                CommandPriority m_priority;                                     // Command priority
+                Priority m_priority;                                            // Command priority
         };
 
         using pCommand = std::unique_ptr<Command>;                              // Alias for unique_ptr<Command>
