@@ -4,6 +4,7 @@ Date: 19/07/2024
 Description: This file implements the application class which controls the entire application.
 */
 
+#include <thread>
 #include "../include/application.hpp"
 #include "../include/frameHandler.hpp"
 #include "../include/invoker.hpp"
@@ -39,6 +40,9 @@ namespace Application
 
                 // Call the frame handler destructor
                 FrameHandler::FrameHandler::getInstance().~FrameHandler();
+
+                // Call the thread manager destructor
+                ThreadManager::ThreadManager::getInstance().~ThreadManager();
 
                 // Set the health flag to shut down
                 healthFlag = HealthFlag::ShutDown;
