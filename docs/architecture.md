@@ -27,3 +27,12 @@ The main loop occurs within the `run()` method. It makes sure that the applicati
 The `run()` method runs only when the *health flag* allows it to. The *health flag* is a simple way to check the status of the application and if something went wrong and how the application should deal with it. The application's health is dependent on the status of assets, the exceptions that occurred and various other factors.
 
 The `Application` also contains the `controlFlow()` method which makes sure the commands are processed as they should be. That is based on the context of the application. I briefly mentioned before that there are some batches. Well that depends on the context of the application. If the application can afford to process all the commands at once it will do so. If not it will process them in batches and in a specified time period.
+
+
+### Thread manager
+
+The `Application` has a lot of systems it needs to stay afloat and running. For that reason the various aspects of the `Application` are divided into several *types* which are then used by the `ThreadManager` to dedicate each type a specific thread. The `ThreadManager` is responsible for managing the threads and their life cycles. It is a singleton as we want one central place for the threads to go to.
+
+The `ThreadManager` receives a `Task` object which is then executed. In practice it means that the `Invoker` when it executes the command it creates a `Task` object which is then sent to the `ThreadManager` to be executed. The `ThreadManager` then decides which thread to use to execute the `Task` object. The `ThreadManager` itself has a thread to make sure it is running and managing the threads as it should.
+
+The `ThreadManager` has a *priority queue* for the `Task` objects. The `Task` objects are executed based on their priority. The highest priority is given to the *critical exceptions* which require the application to be terminated immediately. The *thread system* and *command system* are very similar in their functionality.
