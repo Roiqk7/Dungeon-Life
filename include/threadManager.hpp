@@ -39,13 +39,14 @@ namespace ThreadManager
                 void submit(pTask task);                                        // Submit a task to the thread manager
         private: // Methods
         // Thread handling
+                void handleTask();                                              // Handle a task
                 void worker();                                                  // Worker thread function
                 void shutDown();                                                // Shut down the thread manager
         protected: // Constructor
                 ThreadManager();                                                // Constructor
         private: // Variables
         // Thread handling
-                std::map<Type, std::thread> m_threadPools;                      // Map of threads for each type
+                std::vector<std::thread> m_threads;                             // Vector of threads which are dynamically created based on the workload
                 size_t m_maxThreads;                                            // Maximum number of threads available
         // Tasks
                 Tool::PriorityQueue<Task> m_queue;                              // Priority queue of tasks
