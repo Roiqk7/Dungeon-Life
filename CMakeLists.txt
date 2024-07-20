@@ -10,6 +10,10 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 option(DEVELOPMENT "Build the project in development mode" OFF)
 message(STATUS "Development mode: ${DEVELOPMENT}")
 
+# Option to build tests
+option(TEST "Build tests" OFF)
+message(STATUS "Build tests: ${TEST}")
+
 # Include directories
 target_include_directories(DungeonLife PUBLIC "include/")
 
@@ -39,4 +43,9 @@ if(DEVELOPMENT)
         target_link_libraries(DungeonLife PRIVATE spdlog::spdlog)
         # Define DEVELOPMENT preprocessor macro
         target_compile_definitions(DungeonLife PRIVATE DEVELOPMENT=1)
+endif()
+
+# Conditionally build tests
+if(TEST)
+        # TODO:
 endif()
