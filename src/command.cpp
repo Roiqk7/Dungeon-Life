@@ -11,6 +11,8 @@ Notes: Follows the command pattern.
 
 namespace CommandSystem
 {
+        using namespace Globals;
+
 // Command base class
         /*
         Constructor. Initializes the command.
@@ -19,8 +21,8 @@ namespace CommandSystem
         @param commandType: The type of the command.
         @param priority: The priority of the command.
         */
-        Command::Command(std::string name, CommandType commandType, CommandPriority priority)
-                : m_name(name), m_commandType(commandType), m_priority(priority) {}
+        Command::Command(std::string name, Type type, Priority priority)
+                : m_name(name), m_type(type), m_priority(priority) {}
 
         /*
         Get the name of the command.
@@ -37,9 +39,9 @@ namespace CommandSystem
 
         @return The type of the command.
         */
-        CommandType Command::getCommandType() const
+        Type Command::getType() const
         {
-                return m_commandType;
+                return m_type;
         }
 
         /*
@@ -47,7 +49,7 @@ namespace CommandSystem
 
         @return The priority of the command.
         */
-        CommandPriority Command::getPriority() const
+        Priority Command::getPriority() const
         {
                 return m_priority;
         }
