@@ -66,7 +66,7 @@ namespace Globals
         */
         enum class Type
         {
-                None = 0, UserInput, System, Exception
+                Size = 4, None = 0, UserInput, System, Exception
         };
 
         /*
@@ -74,7 +74,7 @@ namespace Globals
         */
         enum class Priority
         {
-                Regular = 0, High, Critical
+                Size = 3, Regular = 0, High, Critical
         };
 }
 
