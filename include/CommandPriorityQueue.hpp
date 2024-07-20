@@ -16,28 +16,22 @@ Description: This file contains the command queue class which is responsible for
 
 namespace CommandSystem
 {
-        class CommandQueue
+        class CommandPriorityQueue
         {
         public: // Methods
         // Constructor
-                CommandQueue() = default;                                       // Initialize the command queue
+                CommandPriorityQueue() = default;                               // Initialize the command queue
         // Destructor
-                ~CommandQueue() = default;                                      // Clean up the command queue
-        // Delete copy constructor and copy assignment operator
-                CommandQueue(const CommandQueue&) = delete;
-                CommandQueue& operator=(const CommandQueue&) = delete;
-        // Delete move constructor and move assignment operator
-                CommandQueue(CommandQueue&&) = delete;
-                CommandQueue& operator=(CommandQueue&&) = delete;
+                ~CommandPriorityQueue() = default;                              // Clean up the command queue
         // Command handling
                 void push(pCommand command);                                    // Push a command to the queue
                 pCommand pop();                                                 // Pop a command from the queue
                 bool empty() const;                                             // Check if the queue is empty
         private: // Methods
                 mutable std::mutex mutex;                                       // Mutex to protect the queue (thread-safe)
-                std::condition_variable emptyCondition;                         // Condition variable to notify when the queue IS empty
-                std::priority_queue<pCommand, std::vector<pCommand>,
-                        CommandComparator> queue;                               // Priority queue to store commands
+                std::condition_variable notEmptyCondition;                      // Condition variable to notify when the queue is not empty
+                std::array<CommandQueue,
+                        static_cast<size_t>(CommandPriority::Size)> queues;     // Array of queues based on priority
         };
 }
 
