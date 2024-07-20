@@ -13,9 +13,9 @@ BIN_DIR="bin/"
 CONVERT_SCRIPT="tool/jsonToBin.py"
 
 # Create the output directory if it doesn't exist
-if [ ! -d "build" ]; then
+if [ ! -d "bin" ]; then
         echo "Creating $BIN_DIR directory..."
-        mkdir -p "$BIN_DIR"
+        mkdir bin
 fi
 
 # Find all JSON files in the JSON_DIR and convert them to binary
