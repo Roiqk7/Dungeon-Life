@@ -18,15 +18,8 @@ install_homebrew()
 # Function to install dependencies using Homebrew
 install_dependencies()
 {
-        echo "Installing dependencies using Homebrew..."
-        # Check if the script was called with the 'dev' argument
-        if [ "${1}" == "dev" ]; then
-                echo "Setting up the project in development mode..."
-                brew install spdlog
-        fi
-
         # Install dependencies using Homebrew
-        brew install cmake gcc python
+        brew install cmake gcc googletest jsoncpp python spdlog
 }
 
 # Detect operating system using uname
@@ -38,7 +31,7 @@ if [ "${OS}" = "Darwin" ]; then
         install_homebrew
 
         # Install dependencies
-        install_dependencies "$1"
+        install_dependencies
 else
         echo "[Error] This script is intended for MacOS users."
 fi
