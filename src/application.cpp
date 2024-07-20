@@ -136,7 +136,7 @@ namespace Application
                 auto& invoker = CommandSystem::Invoker::getInstance();
 
                 // If the command queue is empty, wait for a command
-                if (invoker.empty)
+                if (invoker.empty())
                 {
                         // Log the waiting for a command
                         LOG_TRACE("Command queue is empty. Waiting for a command...");

@@ -36,6 +36,8 @@ namespace CommandSystem
                 void submit(pCommand command);                                  // Submit a command to the invoker
                 void process();                                                 // Process all the commands in the queue
                 void process(const std::chrono::microseconds& duration);        // Process the commands in the queue given a duration
+        // Checks
+                bool empty() const;                                             // Check if the queue is empty
         protected: // Constructor
                 Invoker();                                                      // Constructor
         private: // Methods

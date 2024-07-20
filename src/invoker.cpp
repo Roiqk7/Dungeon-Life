@@ -85,6 +85,16 @@ namespace CommandSystem
         }
 
         /*
+        Check if the queue is empty.
+
+        @return True if the queue is empty, false otherwise.
+        */
+        bool Invoker::empty() const
+        {
+                return m_commandQueue.empty();
+        }
+
+        /*
         Constructor. Initializes the invoker.
         */
         Invoker::Invoker()
