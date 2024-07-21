@@ -17,8 +17,12 @@ namespace Exception
         class ExceptionHandler
         {
         public: // Methods
-        // Constructor
-                ExceptionHandler();
+        // Destructor
+                ~ExceptionHandler();                                            // Destructor which is responsible for processing all exceptions
+        // Singleton
+                static ExceptionHandler& getInstance();
+                ExceptionHandler(const ExceptionHandler&) = delete;             // Delete copy constructor
+                ExceptionHandler& operator=(const ExceptionHandler&) = delete;  // Delete copy assignment operator
         // Exception handling
                 void processExceptions();                                       // Process all exceptions in the queue
         private: // Methods
