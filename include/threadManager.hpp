@@ -26,6 +26,11 @@ namespace ThreadManager
         // Thread handling
                 void worker();                                                  // Worker thread function
                 void shutDown();                                                // Shut down the thread manager
+        private: // Methods
+        // Initialization
+                void init() override;                                           // Initialize the thread manager
+        // Task handling
+                void handleTask(Tool::pPriorityQueueElement task) override;     // Handle a task
         private: // Variables
         // Thread handling
                 std::vector<std::thread> m_threads;                             // Vector of threads which are dynamically created based on the workload
