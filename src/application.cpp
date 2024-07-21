@@ -41,10 +41,10 @@ namespace Application
                 CommandSystem::Invoker::getInstance().~Invoker();
 
                 // Call the exception handler destructor
-                Exception::ExceptionTool::getInstance().~ExceptionHandler();
+                Exception::ExceptionHandler::getInstance().~ExceptionHandler();
 
                 // Call the frame handler destructor
-                FrameTool::FrameTool::getInstance().~FrameHandler();
+                FrameHandler::FrameHandler::getInstance().~FrameHandler();
 
                 // Call the thread manager destructor
                 ThreadManager::ThreadManager::getInstance().~ThreadManager();
@@ -85,10 +85,10 @@ namespace Application
                 CommandSystem::Invoker::getInstance();
 
                 // Initialize the exception handler
-                Exception::ExceptionTool::getInstance();
+                Exception::ExceptionHandler::getInstance();
 
                 // Initialize the frame handler
-                FrameTool::FrameTool::getInstance();
+                FrameHandler::FrameHandler::getInstance();
 
                 // Initialize the thread manager
                 ThreadManager::ThreadManager::getInstance();
