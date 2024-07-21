@@ -8,6 +8,7 @@ Description: This file contains the handler base class from which other singleto
 #define HANDLER_HPP
 
 #include "priorityQueue.hpp"
+#include "priorityQueueElement.hpp"
 
 namespace Handler
 {
@@ -24,11 +25,16 @@ namespace Handler
                 static Derived& getInstance();                                  // Get the instance of the handler
                 Handler(const Handler&) = delete;                               // Delete copy constructor
                 Handler& operator=(const Handler&) = delete;                    // Delete copy assignment operator
+        // Task handling
+                void submit(Tool::pPriorityQueueElement task);                  // Submit a task to the handler
+                void processTasks();                                            // Process all tasks in the queue
         protected: // Methods
         // Constructor
                 Handler() = default;                                            // Constructor
         // Initialization
                 virtual void init() = 0;                                        // Pure virtual function for initialization
+        // Task handling
+                virtual void handleTask(Tool::pPriorityQueueElement task) = 0;  // Handle a task
         protected: // Variables
                 Tool::PriorityQueue m_queue;                                    // Priority queue of tasks, with type specified by subclass
         };
