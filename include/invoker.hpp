@@ -27,7 +27,8 @@ namespace CommandSystem
                 ~Invoker();                                                     // Destructor
         // Command handling
                 void waitCommand();                                             // Sleep until a command is submitted
-                void process(const std::chrono::microseconds& duration);        // Process the commands in the queue given a duration
+                void processForDuration(
+                        const std::chrono::microseconds& duration);             // Process the commands in the queue given a duration
         private: // Methods
         // Initialization
                 void init() override;                                           // Initialize the invoker
