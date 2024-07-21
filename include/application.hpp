@@ -76,7 +76,6 @@ namespace Application
         private: // Variables
                 HealthFlag healthFlag;                                          // Flag to determine the health of the application
                 Context context;                                                // Context of the application
-                Exception::ExceptionHandler exceptionHandler;                   // Exception handler to handle all exceptions
         };
 }
 
