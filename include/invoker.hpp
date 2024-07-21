@@ -30,9 +30,7 @@ namespace CommandSystem
                         const std::chrono::microseconds& duration);             // Process the commands in the queue given a duration
         private: // Methods
         // Constructor
-                Invoker();                                                      // Constructor
-        // Initialization
-                void init() override;                                           // Initialize the invoker
+                Invoker();                                                      // Constructor                                          // Initialize the invoker
         // Task handling
                 void handleTask(Tool::pPriorityQueueElement task) override;     // Handle a task
         };
