@@ -33,6 +33,8 @@ namespace ThreadManager
                 void init() override;                                           // Initialize the thread manager
         // Task handling
                 void handleTask(Tool::pPriorityQueueElement task) override;     // Handle a task
+        public: // Variables
+                bool multiThreaded;                                             // Flag to indicate if the system is multi-threaded
         private: // Variables
         // Thread handling
                 std::vector<std::thread> m_threads;                             // Vector of threads which are dynamically created based on the workload
