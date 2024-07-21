@@ -8,27 +8,20 @@ Description: This file contains the exception handler class which is used to han
 #define EXCEPTION_HANDLER_HPP
 
 #include "exception.hpp"
+#include "handler.hpp"
 
 namespace Exception
 {
         /*
         The exception handler class is used to handle all exceptions in the application.
         */
-        class ExceptionHandler
+        class ExceptionHandler : public Handler::Handler<ExceptionHandler>
         {
-        public: // Methods
-        // Destructor
-                ~ExceptionHandler();                                            // Destructor which is responsible for processing all exceptions
-        // Singleton
-                static ExceptionHandler& getInstance();
-                ExceptionHandler(const ExceptionHandler&) = delete;             // Delete copy constructor
-                ExceptionHandler& operator=(const ExceptionHandler&) = delete;  // Delete copy assignment operator
-        // Exception handling
-                void processExceptions();                                       // Process all exceptions in the queue
         private: // Methods
-                void handleException(pException& exception);                    // Handle a specific exception
-        public: // Variables
-                ExceptionQueue exceptions;                                      // Queue of unprocessed exceptions
+        // Initialization
+                void init() override;                                           // Initialize the exception handler
+        // Task handling
+                void handleTask(Tool::pPriorityQueueElement task) override;     // Handle a task
         };
 }
 
