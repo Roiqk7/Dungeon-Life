@@ -11,7 +11,7 @@ Description: This file contains the handler base class from which other singleto
 #include "priorityQueueElement.hpp"
 #include "singleton.hpp"
 
-namespace Handler
+namespace Tool
 {
         /*
         The handler class is a base class from which other singleton handler classes inherit from.

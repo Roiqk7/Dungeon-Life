@@ -18,7 +18,7 @@ namespace ThreadManager
 {
         using namespace Globals;
 
-        class ThreadManager : public Handler::Handler<ThreadManager>
+        class ThreadManager : public Tool::Handler<ThreadManager>
         {
         public: // Methods
         // Destructor

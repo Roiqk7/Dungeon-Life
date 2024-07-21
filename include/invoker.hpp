@@ -20,7 +20,7 @@ Notes: Follows the command pattern.
 
 namespace CommandSystem
 {
-        class Invoker : public Handler::Handler<Invoker>
+        class Invoker : public Tool::Handler<Invoker>
         {
         public: // Methods
         // Destructor

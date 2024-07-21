@@ -41,10 +41,10 @@ namespace Application
                 CommandSystem::Invoker::getInstance().~Invoker();
 
                 // Call the exception handler destructor
-                Exception::ExceptionHandler::getInstance().~ExceptionHandler();
+                Exception::ExceptionTool::getInstance().~ExceptionHandler();
 
                 // Call the frame handler destructor
-                FrameHandler::FrameHandler::getInstance().~FrameHandler();
+                FrameTool::FrameTool::getInstance().~FrameHandler();
 
                 // Call the thread manager destructor
                 ThreadManager::ThreadManager::getInstance().~ThreadManager();
@@ -85,10 +85,10 @@ namespace Application
                 CommandSystem::Invoker::getInstance();
 
                 // Initialize the exception handler
-                Exception::ExceptionHandler::getInstance();
+                Exception::ExceptionTool::getInstance();
 
                 // Initialize the frame handler
-                FrameHandler::FrameHandler::getInstance();
+                FrameTool::FrameTool::getInstance();
 
                 // Initialize the thread manager
                 ThreadManager::ThreadManager::getInstance();
@@ -169,7 +169,7 @@ namespace Application
                 {
                         // get the frame handler instance
                         auto& frameHandler =
-                                FrameHandler::FrameHandler::getInstance();
+                                FrameTool::FrameTool::getInstance();
 
                         // Get the remaining time until the next frame
                         auto remainingTime = frameHandler.getRemainingTime();

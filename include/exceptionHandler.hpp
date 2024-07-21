@@ -15,7 +15,7 @@ namespace Exception
         /*
         The exception handler class is used to handle all exceptions in the application.
         */
-        class ExceptionHandler : public Handler::Handler<ExceptionHandler>
+        class ExceptionHandler : public Tool::Handler<ExceptionHandler>
         {
         private: // Methods
         // Initialization
