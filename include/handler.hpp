@@ -28,6 +28,8 @@ namespace Handler
         // Task handling
                 void submit(Tool::pPriorityQueueElement task);                  // Submit a task to the handler
                 void process();                                                 // Process all tasks in the queue
+        // Checks
+                bool empty() const;                                             // Check if the queue is empty
         protected: // Methods
         // Constructor
                 Handler() = default;                                            // Constructor
