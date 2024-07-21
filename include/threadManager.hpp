@@ -36,8 +36,6 @@ namespace ThreadManager
                 std::vector<std::thread> m_threads;                             // Vector of threads which are dynamically created based on the workload
                 std::thread m_taskHandler;                                      // Thread to handle tasks (used by the thread manager)
                 size_t m_maxThreads;                                            // Maximum number of threads available
-        // Tasks
-                Tool::PriorityQueue m_queue;                                    // Priority queue of tasks
         // System
                 bool m_shutDown;                                                // Flag to indicate if the thread manager should shut down
         };
