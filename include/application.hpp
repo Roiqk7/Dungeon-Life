@@ -7,9 +7,6 @@ Description: This file contains functions control the entire application.
 #ifndef APPLICATION_HPP
 #define APPLICATION_HPP
 
-#include "exceptionHandler.hpp"
-#include "threadManager.hpp"
-
 namespace Application
 {
         /*
