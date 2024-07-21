@@ -36,6 +36,7 @@ namespace Application
         */
         Application::~Application()
         {
+                // IDEA: Perhaps add handler vector???
                 // Call the invoker destructor
                 CommandSystem::Invoker::getInstance().~Invoker();
 
@@ -79,6 +80,7 @@ namespace Application
         */
         void Application::init()
         {
+                // IDEA: Perhaps add handler vector???
                 // Initialize the invoker
                 CommandSystem::Invoker::getInstance();
 
