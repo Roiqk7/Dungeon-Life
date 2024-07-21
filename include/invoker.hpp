@@ -13,7 +13,6 @@ Notes: Follows the command pattern.
 #include <condition_variable>
 #include <memory>
 #include <mutex>
-#include "command.hpp"
 #include "globals.hpp"
 #include "handler.hpp"
 #include "priorityQueue.hpp"

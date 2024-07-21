@@ -12,7 +12,6 @@ Description: This file defines the thread manager class which is responsible for
 #include <vector>
 #include "handler.hpp"
 #include "priorityQueue.hpp"
-#include "task.hpp"
 
 namespace ThreadManager
 {
