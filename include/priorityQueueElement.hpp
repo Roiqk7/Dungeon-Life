@@ -24,6 +24,10 @@ namespace Tool
                         Globals::Type type, std::function<void()> callback);
         // Destructor
                 virtual ~PriorityQueueElement() = default;
+        // Getters
+                const std::string& getName() const;                             // Get the name of the element
+                Globals::Priority getPriority() const;                          // Get the priority of the element
+                Globals::Type getType() const;                                  // Get the type of the element
         // Callback execution
                 void execute();                                                 // Execute the callback function
         // Operators
