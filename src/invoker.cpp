@@ -6,6 +6,7 @@ Description: This file implements the invoker class which is responsible for exe
 
 #include "../include/invoker.hpp"
 #include "../include/globals.hpp"
+#include "../include/threadManager.hpp"
 
 namespace CommandSystem
 {
@@ -63,7 +64,7 @@ namespace CommandSystem
                         LOG_TRACE("Executing command: " + task->getName());
 
                         // Execute the command
-                        task->execute();
+                        ThreadManager::ThreadManager::getInstance().submit(std::move(task));
                 }
         }
 }
