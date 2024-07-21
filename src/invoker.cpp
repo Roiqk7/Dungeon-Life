@@ -19,17 +19,6 @@ namespace CommandSystem
         }
 
         /*
-        Returns the instance of the invoker.
-
-        @return The instance of the invoker.
-        */
-        Invoker& Invoker::getInstance()
-        {
-                static Invoker instance;
-                return instance;
-        }
-
-        /*
         Sleep until a command is submitted.
         */
         void Invoker::waitCommand()
@@ -42,35 +31,11 @@ namespace CommandSystem
         }
 
         /*
-        Submit a command to the invoker.
-
-        @param command: The command to submit.
-        */
-        void Invoker::submit(pCommand command)
-        {
-                // Push the command to the queue
-                m_queue.push(std::move(command));
-        }
-
-        /*
-        Process all the commands in the queue.
-        */
-        void Invoker::process()
-        {
-                // While the queue is not empty
-                while(!m_queue.empty())
-                {
-                        // Process the command
-                        processCommand(m_queue.pop());
-                }
-        }
-
-        /*
         Process the commands in the queue given a duration.
 
         @param duration: The duration to process the commands.
         */
-        void Invoker::process(const std::chrono::microseconds& duration)
+        void Invoker::processForDuration(const std::chrono::microseconds& duration)
         {
                 // Get the start time
                 auto startTime = std::chrono::high_resolution_clock::now();
@@ -80,27 +45,8 @@ namespace CommandSystem
                 while(!m_queue.empty() && std::chrono::high_resolution_clock::now() - startTime < duration)
                 {
                         // Process the command
-                        processCommand(m_queue.pop());
+                        handleTask(m_queue.pop());
                 }
-        }
-
-        /*
-        Check if the queue is empty.
-
-        @return True if the queue is empty, false otherwise.
-        */
-        bool Invoker::empty() const
-        {
-                return m_queue.empty();
-        }
-
-        /*
-        Constructor. Initializes the invoker.
-        */
-        Invoker::Invoker()
-        {
-                // Log the creation of the invoker
-                LOG_INFO("Invoker instance created.");
         }
 
         /*
@@ -108,16 +54,16 @@ namespace CommandSystem
 
         @param command: The command to process.
         */
-        void Invoker::processCommand(pCommand command)
+        void Invoker::handleTask(Tool::pPriorityQueueElement task)
         {
                 // Check if the command is valid
-                if (command)
+                if (task)
                 {
                         // Log the command execution
-                        LOG_TRACE("Executing command: " + command->getName());
+                        LOG_TRACE("Executing command: " + task->getName());
 
                         // Execute the command
-                        command->execute();
+                        task->execute();
                 }
         }
 }
