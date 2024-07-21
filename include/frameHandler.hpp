@@ -10,7 +10,7 @@ Description: This file defines a singleton class which handles the frame rate of
 #include <chrono>
 #include <thread>
 #include "globals.hpp"
-#include "handler.hpp"
+#include "singleton.hpp"
 
 namespace FrameHandler
 {
@@ -18,7 +18,7 @@ namespace FrameHandler
         Calculates the delta time between frames. Makes sure the app runs at a
                 constant frame rate.
         */
-        class FrameHandler : public Handler::Handler<FrameHandler>
+        class FrameHandler : public Tool::Singleton<FrameHandler>
         {
         public: // Methods
         // Frame handling
