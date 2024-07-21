@@ -21,30 +21,8 @@ namespace ThreadManager
         }
 
         /*
-        Singleton.
-
-        @return The thread manager instance.
-        */
-        ThreadManager& ThreadManager::getInstance()
-        {
-                static ThreadManager instance;
-                return instance;
-        }
-
-        /*
-        Submit a task to the thread manager.
-
-        @param task: The task to submit.
-        */
-        void ThreadManager::submit(pTask task)
-        {
-                // Add the task to the queue
-                m_queue.push(std::move(task));
-        }
-
-        /*
         Constructor.
-        */
+
         ThreadManager::ThreadManager()
                 : m_maxThreads(std::thread::hardware_concurrency()), m_shutDown(false)
         {
@@ -54,18 +32,16 @@ namespace ThreadManager
                 // Create single worker thread
                 m_threads.push_back(std::thread(&ThreadManager::worker, this));
         }
+        */
 
         /*
         Handle a task.
         */
-        void ThreadManager::handleTask()
+        void ThreadManager::handleTask(Tool::pPriorityQueueElement task)
         {
                 // Handle tasks until the thread manager is shut down
                 while (!m_shutDown)
                 {
-                        // Get the next task
-                        pTask task = m_queue.pop();
-
                         // Execute the task
                         task->execute();
                 }
@@ -86,7 +62,7 @@ namespace ThreadManager
                         m_queue.notEmptyCondition.wait(lock, [this] { return !m_queue.empty(); });
 
                         // Get the next task
-                        pTask task = m_queue.pop();
+                        Tool::pPriorityQueueElement task = m_queue.pop();
 
                         // Execute the task
                         task->execute();
