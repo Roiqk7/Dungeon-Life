@@ -24,7 +24,8 @@ namespace ThreadManager
         Constructor.
         */
         ThreadManager::ThreadManager()
-                : m_maxThreads(std::thread::hardware_concurrency()), m_shutDown(false)
+                : m_maxThreads(std::thread::hardware_concurrency()),
+                multiThreaded(false), m_shutDown(false)
         {
                 // Initialize the thread manager
                 init();
