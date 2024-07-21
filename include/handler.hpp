@@ -9,6 +9,7 @@ Description: This file contains the handler base class from which other singleto
 
 #include "priorityQueue.hpp"
 #include "priorityQueueElement.hpp"
+#include "singleton.hpp"
 
 namespace Handler
 {
@@ -16,23 +17,15 @@ namespace Handler
         The handler class is a base class from which other singleton handler classes inherit from.
         */
         template<typename Derived>
-        class Handler
+        class Handler : public Tool::Singleton<Derived>
         {
         public: // Methods
-        // Destructor
-                virtual ~Handler() = default;
-        // Singleton
-                static Derived& getInstance();                                  // Get the instance of the handler
-                Handler(const Handler&) = delete;                               // Delete copy constructor
-                Handler& operator=(const Handler&) = delete;                    // Delete copy assignment operator
         // Task handling
                 void submit(Tool::pPriorityQueueElement task);                  // Submit a task to the handler
                 void process();                                                 // Process all tasks in the queue
         // Checks
                 bool empty() const;                                             // Check if the queue is empty
         protected: // Methods
-        // Constructor
-                Handler() = default;                                            // Constructor
         // Initialization
                 virtual void init() = 0;                                        // Pure virtual function for initialization
         // Task handling
