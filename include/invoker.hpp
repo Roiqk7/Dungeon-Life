@@ -29,6 +29,8 @@ namespace CommandSystem
                 void processForDuration(
                         const std::chrono::microseconds& duration);             // Process the commands in the queue given a duration
         private: // Methods
+        // Constructor
+                Invoker();                                                      // Constructor
         // Initialization
                 void init() override;                                           // Initialize the invoker
         // Task handling

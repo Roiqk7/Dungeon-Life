@@ -51,6 +51,18 @@ namespace CommandSystem
         }
 
         /*
+        Constructor. Initializes the invoker.
+        */
+        Invoker::Invoker()
+        {
+                // Log the creation of the invoker
+                LOG_INFO("Invoker instance created.");
+
+                // Initialize the invoker
+                init();
+        }
+
+        /*
         Process a command.
 
         @param command: The command to process.
