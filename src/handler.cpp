@@ -13,9 +13,27 @@ namespace Tool
 
         @param task The task to submit.
         */
-        void Handler::submit(Tool::pPriorityQueueElement task)
+        template<typename Derived>
+        void Handler<Derived>::submit(Tool::pPriorityQueueElement task)
         {
                 // Add the task to the queue
                 m_queue.push(task);
+        }
+
+        /*
+        Process all tasks in the queue.
+        */
+        template<typename Derived>
+        void Handler<Derived>::process()
+        {
+                // Process all tasks in the queue
+                while (!m_queue.empty())
+                {
+                        // Get the top task from the queue
+                        Tool::pPriorityQueueElement task = m_queue.pop();
+
+                        // Handle the task
+                        handleTask(task);
+                }
         }
 }
