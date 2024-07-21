@@ -6,6 +6,7 @@ Description: This file implements the application class which controls the entir
 
 #include <thread>
 #include "../include/application.hpp"
+#include "../include/exceptionHandler.hpp"
 #include "../include/frameHandler.hpp"
 #include "../include/invoker.hpp"
 #include "../include/globals.hpp"
@@ -37,6 +38,9 @@ namespace Application
         {
                 // Call the invoker destructor
                 CommandSystem::Invoker::getInstance().~Invoker();
+
+                // Call the exception handler destructor
+                Exception::ExceptionHandler::getInstance().~ExceptionHandler();
 
                 // Call the frame handler destructor
                 FrameHandler::FrameHandler::getInstance().~FrameHandler();
@@ -77,6 +81,9 @@ namespace Application
         {
                 // Initialize the invoker
                 CommandSystem::Invoker::getInstance();
+
+                // Initialize the exception handler
+                Exception::ExceptionHandler::getInstance();
 
                 // Initialize the frame handler
                 FrameHandler::FrameHandler::getInstance();
@@ -166,7 +173,7 @@ namespace Application
                         auto remainingTime = frameHandler.getRemainingTime();
 
                         // Process the commands in the given duration
-                        invoker.process(remainingTime);
+                        invoker.processForDuration(remainingTime);
                 }
                 // We do not care about FPS so we can handle all the commands
                 // without any restrictions.
