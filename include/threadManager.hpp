@@ -7,15 +7,8 @@ Description: This file defines the thread manager class which is responsible for
 #ifndef THREAD_MANAGER_HPP
 #define THREAD_MANAGER_HPP
 
-#include <condition_variable>
-#include <functional>
-#include <future>
-#include <map>
-#include <mutex>
-#include <queue>
 #include <thread>
 #include <vector>
-#include "globals.hpp"
 #include "priorityQueue.hpp"
 #include "task.hpp"
 
@@ -47,9 +40,10 @@ namespace ThreadManager
         private: // Variables
         // Thread handling
                 std::vector<std::thread> m_threads;                             // Vector of threads which are dynamically created based on the workload
+                std::thread m_taskHandler;                                      // Thread to handle tasks (used by the thread manager)
                 size_t m_maxThreads;                                            // Maximum number of threads available
         // Tasks
-                Tool::PriorityQueue<Task> m_queue;                              // Priority queue of tasks
+                Tool::PriorityQueue m_queue;                                    // Priority queue of tasks
         // System
                 bool m_shutDown;                                                // Flag to indicate if the thread manager should shut down
         };
