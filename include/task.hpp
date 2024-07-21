@@ -1,7 +1,7 @@
 /*
 Date: 20/07/2024
 
-Description: This file defines the task struct which is a wrapper for tasks that can be executed by the thread manager.
+Description: This file defines the task class which is a wrapper for tasks that can be executed by the thread manager.
 */
 
 #ifndef TASK_HPP
@@ -16,13 +16,15 @@ namespace ThreadManager
         using namespace Globals;
 
         /*
-        The task struct is a wrapper for tasks that can be executed by the thread manager.
+        The task class is a wrapper for tasks that can be executed by the thread manager.
         */
-        struct Task
+        class Task
         {
         public: // Methods
         // Constructor
-                Task(std::function<void()> task, Priority priority);            // Constructor
+                Task(std::function<void()> task, Type type, Priority priority); // Constructor
+        // Task handling
+                void execute();                                                 // Execute the task
         // Getters
                 Priority getPriority() const;                                   // Get the priority of the task
                 Type getType() const;                                           // Get the type of the task
