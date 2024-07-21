@@ -169,7 +169,7 @@ namespace Application
                 {
                         // get the frame handler instance
                         auto& frameHandler =
-                                FrameTool::FrameTool::getInstance();
+                                FrameHandler::FrameHandler::getInstance();
 
                         // Get the remaining time until the next frame
                         auto remainingTime = frameHandler.getRemainingTime();
