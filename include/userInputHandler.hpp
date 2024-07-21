@@ -1,0 +1,31 @@
+/*
+Date: 20/07/2024
+
+Description: This file defines the user input handler class which is responsible for handling user input.
+*/
+
+#ifndef USER_INPUT_HANDLER_HPP
+#define USER_INPUT_HANDLER_HPP
+
+namespace UserInputHandler
+{
+        // User input handler class
+        class UserInputHandler
+        {
+        public: // Methods
+        // Constructor
+                UserInputHandler() = default;                                   // Default constructor
+
+        // Destructor
+                ~UserInputHandler() = default;                                  // Default destructor
+        // User input
+                void handleUserInput();                                         // Is responsible for handling user input and submitting it to the command invoker
+                void listenForUserInput();                                      // Catches user input
+        private: // Methods
+        // User input
+                void processUserInput();                                        // Process user input (validate, parse, create command)
+                bool validateUserInput();                                       // Validate user input
+        };
+}
+
+#endif // !USER_INPUT_HANDLER_HPP
