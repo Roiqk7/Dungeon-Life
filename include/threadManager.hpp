@@ -9,6 +9,7 @@ Description: This file defines the thread manager class which is responsible for
 
 #include <thread>
 #include <vector>
+#include "handler.hpp"
 #include "priorityQueue.hpp"
 #include "task.hpp"
 
@@ -16,27 +17,15 @@ namespace ThreadManager
 {
         using namespace Globals;
 
-        /*
-        Manages threads for the application.
-        */
-        class ThreadManager
+        class ThreadManager : public Handler::Handler<ThreadManager>
         {
         public: // Methods
         // Destructor
                 ~ThreadManager();                                               // Destructor which is responsible for shutting down all threads
-        // Singleton
-                static ThreadManager& getInstance();
-                ThreadManager(const ThreadManager&) = delete;                   // Delete copy constructor
-                ThreadManager& operator=(const ThreadManager&) = delete;        // Delete copy assignment operator
-        // Thread handling
-                void submit(pTask task);                                        // Submit a task to the thread manager
         private: // Methods
         // Thread handling
-                void handleTask();                                              // Handle a task
                 void worker();                                                  // Worker thread function
                 void shutDown();                                                // Shut down the thread manager
-        protected: // Constructor
-                ThreadManager();                                                // Constructor
         private: // Variables
         // Thread handling
                 std::vector<std::thread> m_threads;                             // Vector of threads which are dynamically created based on the workload
