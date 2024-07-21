@@ -15,37 +15,24 @@ Notes: Follows the command pattern.
 #include <mutex>
 #include "command.hpp"
 #include "globals.hpp"
+#include "handler.hpp"
 #include "priorityQueue.hpp"
 
 namespace CommandSystem
 {
-        /*
-        Handles the execution of commands in the queue.
-        */
-        class Invoker                                                           // Singleton class
+        class Invoker : public Handler::Handler<Invoker>
         {
         public: // Methods
         // Destructor
-                ~Invoker();
-        // Singleton
-                static Invoker& getInstance();
-                Invoker(const Invoker&) = delete;                               // Delete copy constructor
-                Invoker& operator=(const Invoker&) = delete;                    // Delete copy assignment operator
+                ~Invoker();                                                     // Destructor
         // Command handling
                 void waitCommand();                                             // Sleep until a command is submitted
-                void submit(pCommand command);                                  // Submit a command to the invoker
-                void process();                                                 // Process all the commands in the queue
-                void process(const std::chrono::microseconds& duration);        // Process the commands in the queue given a duration
-        // Checks
-                bool empty() const;                                             // Check if the queue is empty
-        protected: // Constructor
-                Invoker();                                                      // Constructor
+                void processTasks(const std::chrono::microseconds& duration);   // Process the commands in the queue given a duration
         private: // Methods
-        // Command handling
-                void processCommand(pCommand command);                          // Process a command
-        private: // Variables
-        // Command handling
-                Tool::PriorityQueue<pCommand> m_queue;                          // Priority queue to hold commands
+        // Initialization
+                void init() override;                                           // Initialize the invoker
+        // Task handling
+                void handleTask(Tool::pPriorityQueueElement task) override;     // Handle a task
         };
 }
 
