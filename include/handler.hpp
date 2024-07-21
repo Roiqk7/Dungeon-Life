@@ -27,7 +27,7 @@ namespace Handler
                 Handler& operator=(const Handler&) = delete;                    // Delete copy assignment operator
         // Task handling
                 void submit(Tool::pPriorityQueueElement task);                  // Submit a task to the handler
-                void processTasks();                                            // Process all tasks in the queue
+                void process();                                                 // Process all tasks in the queue
         protected: // Methods
         // Constructor
                 Handler() = default;                                            // Constructor
