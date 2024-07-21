@@ -14,6 +14,9 @@ message(STATUS "Development mode: ${DEVELOPMENT}")
 option(TEST "Build tests" OFF)
 message(STATUS "Build tests: ${TEST}")
 
+# Add the executable
+add_executable(DungeonLife src/dungeonLife.cpp)
+
 # Include directories
 target_include_directories(DungeonLife PUBLIC "include/")
 
@@ -27,9 +30,6 @@ target_link_libraries(DungeonLife PRIVATE ${SDL2_LIBRARIES})
 find_path(JSONCPP_INCLUDE_DIR json/json.h)
 find_library(JSONCPP_LIBRARY jsoncpp)
 target_include_directories(DungeonLife PRIVATE ${JSONCPP_INCLUDE_DIR})
-
-# Add the executable
-add_executable(DungeonLife src/dungeonLife.cpp)
 
 # Add source files
 target_sources(DungeonLife PRIVATE
