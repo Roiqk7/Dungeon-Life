@@ -36,4 +36,16 @@ namespace Tool
                         handleTask(task);
                 }
         }
+
+        /*
+        Check if the queue is empty.
+
+        @return True if the queue is empty, false otherwise.
+        */
+        template<typename Derived>
+        bool Handler<Derived>::empty() const
+        {
+                // Check if the queue is empty
+                return m_queue.empty();
+        }
 }
