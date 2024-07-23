@@ -11,6 +11,7 @@ Description: This file implements the application class which controls the entir
 #include "../include/invoker.hpp"
 #include "../include/globals.hpp"
 #include "../include/threadManager.hpp"
+#include "../include/userInputHandler.hpp"
 
 namespace Application
 {
@@ -36,7 +37,7 @@ namespace Application
         */
         Application::~Application()
         {
-                // IDEA: Perhaps add handler vector???
+                // TODO: Find a better way to deconstruct the components
                 // Call the invoker destructor
                 CommandSystem::Invoker::getInstance().~Invoker();
 
@@ -48,6 +49,9 @@ namespace Application
 
                 // Call the thread manager destructor
                 ThreadManager::ThreadManager::getInstance().~ThreadManager();
+
+                // Call the user input handler destructor
+                UserInputHandler::UserInputHandler::getInstance().~UserInputHandler();
 
                 // Set the health flag to shut down
                 healthFlag = HealthFlag::ShutDown;
@@ -80,7 +84,7 @@ namespace Application
         */
         void Application::init()
         {
-                // IDEA: Perhaps add handler vector???
+                // TODO: Find a better way to initialize the components
                 // Initialize the invoker
                 CommandSystem::Invoker::getInstance();
 
@@ -92,6 +96,9 @@ namespace Application
 
                 // Initialize the thread manager
                 ThreadManager::ThreadManager::getInstance();
+
+                // Initialize the user input handler
+                UserInputHandler::UserInputHandler::getInstance();
 
                 // Log the initialization of the application
                 LOG_INFO("Application initialized.");
