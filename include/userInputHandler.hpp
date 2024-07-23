@@ -20,8 +20,6 @@ namespace UserInput
         // User input
                 void waitForUserInput();                                        // Wait for user input
         private: // Methods
-        // Constructor
-                UserInputHandler();                                             // Constructor
         // User input
                 void processUserInput(const UserInput& input);                  // Process user input (validate, parse and create command)
                 bool validateUserInput(const UserInput& input);                 // Validate user input
