@@ -64,16 +64,25 @@ namespace Application
         // Application control
                 void run();                                                     // Contains the main loop of the application
         private: // Methods
+        // Self
                 void init();                                                    // Initialize the application
-                void controlFlow();                                             // Control the flow of the application
                 void manageHealth();                                            // Manage the health of the application
                 void checkHealth();                                             // Check the health of the application
                 bool resolveHealth();                                           // Resolve the health of the application
+        // System
+                void controlFlow();                                             // Control the flow of the application
                 void close();                                                   // Close the application
+        // Checks
+                bool shouldRun();                                               // Check if the application should run
+        public: // Variables
+                static bool shouldClose;                                        // Flag to determine if the application should close
         private: // Variables
                 HealthFlag healthFlag;                                          // Flag to determine the health of the application
                 Context context;                                                // Context of the application
         };
+
+        // Static variable initialization
+        bool Application::shouldClose = false;
 }
 
 #endif // !APPLICATION_HPP
