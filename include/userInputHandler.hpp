@@ -22,9 +22,10 @@ namespace UserInput
         // Constructor
                 UserInputHandler();                                             // Constructor
         // User input
-                void processUserInput();                                        // Process user input (validate, parse and create command)
-                bool validateUserInput();                                       // Validate user input
-                Tool::pPriorityQueueElement parseUserInput();                   // Parse user input and create a command
+        // TODO: Decide on the function signatures
+                // void processUserInput();                                        // Process user input (validate, parse and create command)
+                // bool validateUserInput();                                       // Validate user input
+                // Tool::pPriorityQueueElement parseUserInput();                   // Parse user input and create a command
         };
 }
 
