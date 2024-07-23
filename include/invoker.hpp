@@ -19,6 +19,9 @@ Notes: Follows the command pattern.
 
 namespace CommandSystem
 {
+        /*
+        Executes the commands in the queue.
+        */
         class Invoker : public Tool::Handler<Invoker>
         {
         public: // Methods
@@ -34,6 +37,8 @@ namespace CommandSystem
         // Task handling
                 void handleTask(Tool::pPriorityQueueElement task) override;     // Handle a task
         };
+
+        using Command = Tool::pPriorityQueueElement;                            // Alias for the command type
 }
 
 #endif // !INVOKER_HPP
