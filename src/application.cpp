@@ -8,6 +8,8 @@ Description: This file implements the application class which controls the entir
 #include "../include/frameHandler.hpp"
 #include "../include/globals.hpp"
 #include "../include/invoker.hpp"
+#include "../include/threadManager.hpp"
+#include "../include/userInputHandler.hpp"
 
 namespace Application
 {
@@ -64,6 +66,10 @@ namespace Application
         */
         void Application::init()
         {
+                // Request a thread for user input handling
+                ThreadManager::ThreadManager::getInstance().requestThread(
+                        &UserInput::UserInputHandler::waitForUserInput, this);
+
                 // Log the initialization of the application
                 LOG_INFO("Application initialized.");
         }
@@ -161,5 +167,14 @@ namespace Application
 
                 // Set the health flag to shutting down
                 healthFlag = HealthFlag::ShuttingDown;
+
+                // Shut down the thread manager
+                ThreadManager::ThreadManager::getInstance().shutDown();
+
+                // Set the health flag to shut down
+                healthFlag = HealthFlag::ShutDown;
+
+                // Log the closure of the application
+                LOG_INFO("Application closed.");
         }
 }
