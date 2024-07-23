@@ -8,9 +8,9 @@ Description: This file contains the exception class which is used to handle exce
 #define EXCEPTION_HPP
 
 #include <exception>
+#include <functional>
 #include <queue>
 #include <string>
-#include "command.hpp"
 
 #ifdef DEVELOPMENT
 #include <spdlog/spdlog.h>
@@ -41,7 +41,7 @@ namespace Exception
                 #endif
         public: // Variables
                 bool fatal;                                                     // Flag to determine if the exception is fatal and should terminate the application
-                CommandSystem::pCommand command;                                // Follow-up command to execute to handle the exception (nullptr if none)
+                std::function<void()> callback;                                 // Callback function to execute to handle the exception
         protected: // Variables
                 std::string message;
         };
