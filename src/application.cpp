@@ -8,7 +8,6 @@ Description: This file implements the application class which controls the entir
 #include "../include/frameHandler.hpp"
 #include "../include/globals.hpp"
 #include "../include/invoker.hpp"
-#include "../include/userInputHandler.hpp"
 
 namespace Application
 {
