@@ -9,6 +9,7 @@ Description: This file defines the user input handler class which is responsible
 
 #include "priorityQueueElement.hpp"
 #include "singleton.hpp"
+#include "userInput.hpp"
 
 namespace UserInput
 {
@@ -22,10 +23,10 @@ namespace UserInput
         // Constructor
                 UserInputHandler();                                             // Constructor
         // User input
-        // TODO: Decide on the function signatures
-                // void processUserInput();                                        // Process user input (validate, parse and create command)
-                // bool validateUserInput();                                       // Validate user input
-                // Tool::pPriorityQueueElement parseUserInput();                   // Parse user input and create a command
+                void processUserInput(const UserInput& input);                  // Process user input (validate, parse and create command)
+                bool validateUserInput(const UserInput& input);                 // Validate user input
+                Tool::pPriorityQueueElement parseUserInput(
+                        const UserInput& input);                                // Parse user input and create a command
         };
 }
 
