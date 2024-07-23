@@ -4,14 +4,8 @@ Date: 19/07/2024
 Description: This file implements the application class which controls the entire application.
 */
 
-#include <thread>
 #include "../include/application.hpp"
-#include "../include/exceptionHandler.hpp"
-#include "../include/frameHandler.hpp"
-#include "../include/invoker.hpp"
 #include "../include/globals.hpp"
-#include "../include/threadManager.hpp"
-#include "../include/userInputHandler.hpp"
 
 namespace Application
 {
@@ -37,22 +31,6 @@ namespace Application
         */
         Application::~Application()
         {
-                // TODO: Find a better way to deconstruct the components
-                // Call the invoker destructor
-                CommandSystem::Invoker::getInstance().~Invoker();
-
-                // Call the exception handler destructor
-                Exception::ExceptionHandler::getInstance().~ExceptionHandler();
-
-                // Call the frame handler destructor
-                FrameHandler::FrameHandler::getInstance().~FrameHandler();
-
-                // Call the thread manager destructor
-                ThreadManager::ThreadManager::getInstance().~ThreadManager();
-
-                // Call the user input handler destructor
-                UserInputHandler::UserInputHandler::getInstance().~UserInputHandler();
-
                 // Set the health flag to shut down
                 healthFlag = HealthFlag::ShutDown;
 
@@ -84,22 +62,6 @@ namespace Application
         */
         void Application::init()
         {
-                // TODO: Find a better way to initialize the components
-                // Initialize the invoker
-                CommandSystem::Invoker::getInstance();
-
-                // Initialize the exception handler
-                Exception::ExceptionHandler::getInstance();
-
-                // Initialize the frame handler
-                FrameHandler::FrameHandler::getInstance();
-
-                // Initialize the thread manager
-                ThreadManager::ThreadManager::getInstance();
-
-                // Initialize the user input handler
-                UserInputHandler::UserInputHandler::getInstance();
-
                 // Log the initialization of the application
                 LOG_INFO("Application initialized.");
         }
@@ -153,7 +115,7 @@ namespace Application
 
         /*
         Control the flow of the application.
-        */
+
         void Application::controlFlow()
         {
                 // Get the invoker instance
@@ -192,6 +154,7 @@ namespace Application
                         invoker.process();
                 }
         }
+        */
 
         /*
         Close the application.
