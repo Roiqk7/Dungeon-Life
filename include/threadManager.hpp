@@ -46,6 +46,8 @@ namespace ThreadManager
         // System
                 std::atomic<bool> m_shutDown;                                   // Flag to indicate if the thread manager should shut down
         };
+
+        using Task = Tool::pPriorityQueueElement;                               // Alias for the task type
 }
 
 #endif // !THREAD_MANAGER_HPP
