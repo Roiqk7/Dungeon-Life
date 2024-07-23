@@ -39,7 +39,8 @@ namespace ThreadManager
                 bool multiThreaded;                                             // Flag to indicate if the system is multi-threaded
         private: // Variables
         // Thread handling
-                std::vector<std::thread> m_threads;                             // Vector of threads which are dynamically created based on the workload
+                std::thread m_mainThread;                                       // Main thread where the worker function is executed
+                std::vector<std::thread> m_threads;                             // Vector of threads which are dynamically created
                 size_t m_maxThreads;                                            // Maximum number of threads available
         // System
                 std::atomic<bool> m_shutDown;                                   // Flag to indicate if the thread manager should shut down
