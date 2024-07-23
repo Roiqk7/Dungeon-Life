@@ -17,13 +17,13 @@ namespace UserInput
         struct UserInput
         {
                 // Keyboard
-                bool keyDown;                                                   // Flag to indicate if a key is down
-                SDL_Keycode keyCode;                                            // SDL_Keycode is an enum for keyboard keys
+                bool keyDown = false;                                           // Flag to indicate if a key is down
+                SDL_Keycode keyCode = SDLK_UNKNOWN;                             // SDL_Keycode is an enum for keyboard keys
 
                 // Mouse
-                bool click;                                                     // Flag to indicate if a mouse left button is clicked
-                int mouseX;                                                     // Mouse X position
-                int mouseY;                                                     // Mouse Y position
+                bool click = false;                                             // Flag to indicate if a mouse left button is clicked
+                int mouseX = 0;                                                 // Mouse X position
+                int mouseY = 0;                                                 // Mouse Y position
         };
 }
 
