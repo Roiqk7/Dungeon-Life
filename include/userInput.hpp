@@ -24,6 +24,12 @@ namespace UserInput
                 bool click = false;                                             // Flag to indicate if a mouse left button is clicked
                 int mouseX = 0;                                                 // Mouse X position
                 int mouseY = 0;                                                 // Mouse Y position
+
+                // Keyboard constructor
+                UserInput(bool keyDown, SDL_Keycode keyCode);
+
+                // Mouse constructor
+                UserInput(bool click, int mouseX, int mouseY);
         };
 }
 
