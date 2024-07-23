@@ -7,6 +7,9 @@ Description: This file contains the singleton base class from which other single
 #ifndef SINGLETON_HPP
 #define SINGLETON_HPP
 
+#include <functional>
+#include <vector>
+
 namespace Tool
 {
         /*
@@ -22,9 +25,19 @@ namespace Tool
                 static Derived& getInstance();
                 Singleton(const Singleton&) = delete;
                 Singleton& operator=(const Singleton&) = delete;
+        // Central
+                static void initAll();
+                static void cleanupAll();
         protected: // Methods
         // Constructor
                 Singleton() = default;
+        // Cleanup
+                static void cleanup();
+        private: // Methods
+        // Cleanup
+                static std::vector<std::function<void()>>& getCleanupFunctions();
+        // Register cleanup function
+                static void registerCleanupFunction(std::function<void()> cleanupFunction);
         };
 }
 
