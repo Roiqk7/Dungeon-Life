@@ -27,7 +27,6 @@ target_include_directories(DungeonLife PRIVATE ${SDL2_INCLUDE_DIRS})
 target_link_libraries(DungeonLife PRIVATE ${SDL2_LIBRARIES})
 
 # Add JsonCpp
-find_path(JSONCPP_INCLUDE_DIR json/json.h)
 find_library(JSONCPP_LIBRARY jsoncpp)
 target_include_directories(DungeonLife PRIVATE ${JSONCPP_INCLUDE_DIR})
 target_link_libraries(DungeonLife PRIVATE ${JSONCPP_LIBRARY})
@@ -50,12 +49,19 @@ endif()
 # Conditionally build tests
 if(TEST)
         enable_testing()
+
+        # Automatically include all test source files from the test directory
         file(GLOB_RECURSE TEST_SOURCES "test/*.cpp")
-        foreach(TEST_SRC ${TEST_SOURCES})
-                # Extract the file name without directory and extension
-                get_filename_component(TEST_NAME ${TEST_SRC} NAME_WE)
-                add_executable(${TEST_NAME} ${TEST_SRC})
-                target_link_libraries(${TEST_NAME} PRIVATE ${SDL2_LIBRARIES} ${JSONCPP_LIBRARY} spdlog::spdlog)
-                add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME})
-        endforeach()
+
+        # Define the test executable "Test" and specify the test source files
+        add_executable(Test ${TEST_SOURCES})
+
+        # Find and include the Google Test package
+        find_package(GTest REQUIRED)
+
+        # Link the "Test" executable with the necessary libraries
+        target_link_libraries(Test PRIVATE ${SDL2_LIBRARIES} ${JSONCPP_LIBRARY} spdlog::spdlog GTest::GTest GTest::Main)
+
+        # Add the test to CMake's testing framework
+        add_test(NAME Test COMMAND Test)
 endif()
