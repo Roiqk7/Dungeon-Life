@@ -37,15 +37,21 @@ namespace UserInput
                         // Keyboard event
                         case SDL_KEYDOWN:
                         {
+                                // Log the key event
+                                LOG_TRACE("Key pressed: " + std::to_string(event.key.keysym.sym));
+
                                 // Process the key event
-                                // TODO: processUserInput(UserInput(event.key.keysym.sym));
+                                processUserInput(UserInput(true, event.key.keysym.sym));
                                 break;
                         }
                         // Mouse event
                         case SDL_MOUSEBUTTONDOWN:
                         {
+                                // Log the mouse event
+                                LOG_TRACE("Mouse clicked at: " + std::to_string(event.button.x) + ", " + std::to_string(event.button.y));
+
                                 // Process the mouse event
-                                // TODO: processUserInput(UserInput(event.button.button));
+                                processUserInput(UserInput(true, event.button.x, event.button.y));
                                 break;
                         }
                 }
@@ -60,10 +66,10 @@ namespace UserInput
                 if (validateUserInput(input))
                 {
                         // Parse the user input and create a command
-                        // TODO: Tool::pPriorityQueueElement command = parseUserInput(input);
+                        CommandSystem::Command command = parseUserInput(input);
 
                         // Submit the command to the invoker
-                        // TODO: CommandSystem::Invoker::getInstance().submitTask(command);
+                        CommandSystem::Invoker::getInstance().submit(std::move(command));
                 }
         }
 
