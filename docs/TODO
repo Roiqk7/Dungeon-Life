@@ -1,4 +1,4 @@
-[ ] Decide on the overall structure of the application
+[x] Decide on the overall structure of the application
 [ ] Create everything necessary to get to the basic GUI
         [x] Create basic invoker which processes commands
                 [ ] If the processing is not sufficient, induce other overhead to improve eg.: merging commands, sorting them, etc.
@@ -6,12 +6,13 @@
                 [x] Decide on the overall app flow
                 [x] Finish the application init
                 [x] Create the main loop
-        [ ] Integrate the thread system
+        [x] Integrate the thread system
         [x] Add basic user input (so you can close the app)
                 [x] User input handler
-                [ ] User input will be saved with key bindings in json
-                [ ] Json will be parsed to binary and read by a map
+                [x] Create json keybindings file
+                [ ] Create a parser for the keybindings to be read into a map
                 [ ] Create input to command map, based on the bin
+        [ ] IMPLEMENT ALL .HPP FILES
         [ ] Finish the json/bin system
                 [x] Create a json to bin converter
                 [ ] Create tests for the converter
