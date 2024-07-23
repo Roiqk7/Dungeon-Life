@@ -50,11 +50,12 @@ namespace Application
                 // Log the entry to the main application loop
                 LOG_INFO("Application main loop started.");
 
-                // Check the health flag
-                while (healthFlag < HealthFlag::Critical)
+                // Check if the application should run
+                while (shouldRun())
                 {
+                        // TODO: Manage health only when necessary
                         // Manage the health of the application
-                        manageHealth();
+                        // manageHealth();
 
                         // Control the flow of the application
                         controlFlow();
@@ -109,8 +110,9 @@ namespace Application
         {
                 // TODO: Add more health resolutions here
 
-                // If the health flag is critical or above, close the application
-                if (healthFlag >= HealthFlag::Critical)
+                // If the application is not supposed to run, close the
+                // application
+                if (!shouldRun())
                 {
                         // Close the application
                         close();
@@ -176,5 +178,17 @@ namespace Application
 
                 // Log the closure of the application
                 LOG_INFO("Application closed.");
+        }
+
+        /*
+        Check if the application should run.
+
+        @return True if the application should run, false otherwise.
+        */
+        bool Application::shouldRun()
+        {
+                // Check if the health flag is not critical or above and the
+                // application close flag is not set to true
+                return healthFlag < HealthFlag::Critical && !shouldClose;
         }
 }
