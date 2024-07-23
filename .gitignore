@@ -35,4 +35,5 @@
 .vscode/
 bin/
 build/
+myenv/
 lib/
