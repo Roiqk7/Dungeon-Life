@@ -8,6 +8,7 @@ Description: This file defines the thread manager class which is responsible for
 #define THREAD_MANAGER_HPP
 
 #include <atomic>
+#include <functional>
 #include <thread>
 #include <vector>
 #include "handler.hpp"
@@ -28,6 +29,8 @@ namespace ThreadManager
         // Thread handling
                 void worker();                                                  // Worker thread function
                 void shutDown();                                                // Shut down the thread manager
+                template<typename Func, typename... Args>
+                void requestThread(Func&& func, Args&&... args);                // Request a thread
         // Initialization
                 void init() override;                                           // Initialize the thread manager
         // Task handling
