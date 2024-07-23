@@ -7,8 +7,11 @@
                 [x] Finish the application init
                 [x] Create the main loop
         [ ] Integrate the thread system
-        [ ] Add basic user input (so you can close the app)
-                [ ] User input handler (may require SDL)
+        [x] Add basic user input (so you can close the app)
+                [x] User input handler
+                [ ] User input will be saved with key bindings in json
+                [ ] Json will be parsed to binary and read by a map
+                [ ] Create input to command map, based on the bin
         [ ] Finish the json/bin system
                 [x] Create a json to bin converter
                 [ ] Create tests for the converter
