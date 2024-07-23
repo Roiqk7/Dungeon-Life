@@ -23,14 +23,15 @@ namespace ThreadManager
         public: // Methods
         // Destructor
                 ~ThreadManager();                                               // Destructor which is responsible for shutting down all threads
+        // Thread handling
+                template<typename Func, typename... Args>
+                void requestThread(Func&& func, Args&&... args);                // Request a thread
         private: // Methods
         // Constructor
                 ThreadManager();                                                // Constructor
         // Thread handling
                 void worker();                                                  // Worker thread function
                 void shutDown();                                                // Shut down the thread manager
-                template<typename Func, typename... Args>
-                void requestThread(Func&& func, Args&&... args);                // Request a thread
         // Initialization
                 void init() override;                                           // Initialize the thread manager
         // Task handling
