@@ -30,15 +30,17 @@ target_link_libraries(DungeonLife PRIVATE ${SDL2_LIBRARIES})
 find_path(JSONCPP_INCLUDE_DIR json/json.h)
 find_library(JSONCPP_LIBRARY jsoncpp)
 target_include_directories(DungeonLife PRIVATE ${JSONCPP_INCLUDE_DIR})
+target_link_libraries(DungeonLife PRIVATE ${JSONCPP_LIBRARY})
 
 # Add source files
-target_sources(DungeonLife PRIVATE
-        # TODO add source files here
-)
+file(GLOB_RECURSE PROJECT_SOURCES "src/*.cpp")
+# Exclude main file to avoid duplication
+list(REMOVE_ITEM PROJECT_SOURCES "src/dungeonLife.cpp")
+target_sources(DungeonLife PRIVATE ${PROJECT_SOURCES})
 
 # Conditionally include spdlog in development mode
 if(DEVELOPMENT)
-        # Assuming spdlog is installed system-wide or is available in a known path
+        # Add spdlog
         find_package(spdlog REQUIRED)
         target_link_libraries(DungeonLife PRIVATE spdlog::spdlog)
         # Define DEVELOPMENT preprocessor macro
@@ -47,5 +49,13 @@ endif()
 
 # Conditionally build tests
 if(TEST)
-        # TODO:
+        enable_testing()
+        file(GLOB_RECURSE TEST_SOURCES "test/*.cpp")
+        foreach(TEST_SRC ${TEST_SOURCES})
+                # Extract the file name without directory and extension
+                get_filename_component(TEST_NAME ${TEST_SRC} NAME_WE)
+                add_executable(${TEST_NAME} ${TEST_SRC})
+                target_link_libraries(${TEST_NAME} PRIVATE ${SDL2_LIBRARIES} ${JSONCPP_LIBRARY} spdlog::spdlog)
+                add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME})
+        endforeach()
 endif()
