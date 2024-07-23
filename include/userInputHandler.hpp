@@ -7,24 +7,23 @@ Description: This file defines the user input handler class which is responsible
 #ifndef USER_INPUT_HANDLER_HPP
 #define USER_INPUT_HANDLER_HPP
 
+#include "priorityQueueElement.hpp"
+#include "singleton.hpp"
+
 namespace UserInputHandler
 {
         // User input handler class
-        class UserInputHandler
+        class UserInputHandler : public Tool::Singleton<UserInputHandler>
         {
         public: // Methods
-        // Constructor
-                UserInputHandler() = default;                                   // Default constructor
-
-        // Destructor
-                ~UserInputHandler() = default;                                  // Default destructor
         // User input
-                void handleUserInput();                                         // Is responsible for handling user input and submitting it to the command invoker
+                void handleUserInput();                                         // Is responsible for handling user input and submitting it to the invoker
                 void listenForUserInput();                                      // Catches user input
         private: // Methods
         // User input
-                void processUserInput();                                        // Process user input (validate, parse, create command)
+                void processUserInput();                                        // Process user input (validate, parse and create command)
                 bool validateUserInput();                                       // Validate user input
+                Tool::pPriorityQueueElement parseUserInput();                   // Parse user input and create a command
         };
 }
 
