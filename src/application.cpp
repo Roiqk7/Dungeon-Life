@@ -5,7 +5,10 @@ Description: This file implements the application class which controls the entir
 */
 
 #include "../include/application.hpp"
+#include "../include/frameHandler.hpp"
 #include "../include/globals.hpp"
+#include "../include/invoker.hpp"
+#include "../include/userInputHandler.hpp"
 
 namespace Application
 {
@@ -115,46 +118,39 @@ namespace Application
 
         /*
         Control the flow of the application.
-
+        */
         void Application::controlFlow()
         {
                 // Get the invoker instance
                 auto& invoker = CommandSystem::Invoker::getInstance();
 
-                // If the command queue is empty, wait for a command
-                if (invoker.empty())
+                // Check if the invoker has any commands
+                if (!invoker.empty())
                 {
-                        // Log the waiting for a command
-                        LOG_TRACE("Command queue is empty. Waiting for a command...");
+                        // Process the commands in the queue based on the context
+                        // If we are in a game, we process the commands while
+                        // running at specified FPS.
+                        if (context == Context::Gameplay)
+                        {
+                                // get the frame handler instance
+                                auto& frameHandler =
+                                        FrameHandler::FrameHandler::getInstance();
 
-                        // Wait for a command to be submitted
-                        invoker.waitCommand();
-                }
+                                // Get the remaining time until the next frame
+                                auto remainingTime = frameHandler.getRemainingTime();
 
-                // Process the commands in the queue
-                // If we are in a game, we process the commands while
-                // running at specified FPS.
-                if (context == Context::Gameplay)
-                {
-                        // get the frame handler instance
-                        auto& frameHandler =
-                                FrameHandler::FrameHandler::getInstance();
-
-                        // Get the remaining time until the next frame
-                        auto remainingTime = frameHandler.getRemainingTime();
-
-                        // Process the commands in the given duration
-                        invoker.processForDuration(remainingTime);
-                }
-                // We do not care about FPS so we can handle all the commands
-                // without any restrictions.
-                else
-                {
-                        // Process all of the commands
-                        invoker.process();
+                                // Process the commands in the given duration
+                                invoker.processForDuration(remainingTime);
+                        }
+                        // We do not care about FPS so we can handle all the commands
+                        // without any restrictions.
+                        else
+                        {
+                                // Process all of the commands
+                                invoker.process();
+                        }
                 }
         }
-        */
 
         /*
         Close the application.

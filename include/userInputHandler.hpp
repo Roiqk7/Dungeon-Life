@@ -17,8 +17,7 @@ namespace UserInputHandler
         {
         public: // Methods
         // User input
-                void handleUserInput();                                         // Is responsible for handling user input and submitting it to the invoker
-                void listenForUserInput();                                      // Catches user input
+                void waitForUserInput();                                        // Wait for user input
         private: // Methods
         // User input
                 void processUserInput();                                        // Process user input (validate, parse and create command)
