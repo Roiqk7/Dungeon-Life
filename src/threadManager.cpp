@@ -20,6 +20,32 @@ namespace ThreadManager
                 shutDown();
         }
 
+                /*
+        Shut down the thread manager.
+        */
+        void ThreadManager::shutDown()
+        {
+                // Set the shut down flag
+                m_shutDown = true;
+
+                // Join the main thread
+                if (m_mainThread.joinable())
+                {
+                        m_mainThread.join();
+                }
+
+                // Join the other threads
+                for (auto& thread : m_threads)
+                {
+                        // Check if the thread is joinable
+                        if (thread.joinable())
+                        {
+                                // Join the thread
+                                thread.join();
+                        }
+                }
+        }
+
         /*
         Request a thread.
 
@@ -66,32 +92,6 @@ namespace ThreadManager
                 {
                         // Process the task queue
                         process();
-                }
-        }
-
-        /*
-        Shut down the thread manager.
-        */
-        void ThreadManager::shutDown()
-        {
-                // Set the shut down flag
-                m_shutDown = true;
-
-                // Join the main thread
-                if (m_mainThread.joinable())
-                {
-                        m_mainThread.join();
-                }
-
-                // Join the other threads
-                for (auto& thread : m_threads)
-                {
-                        // Check if the thread is joinable
-                        if (thread.joinable())
-                        {
-                                // Join the thread
-                                thread.join();
-                        }
                 }
         }
 
