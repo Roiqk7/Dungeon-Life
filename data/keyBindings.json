@@ -1,3 +1,15 @@
 {
-        "q": "quit"
+        "NonGameplay": {
+                "Quit": "Q",
+                "NavigateUp": "ArrowUp",
+                "NavigateDown": "ArrowDown",
+                "Select": "Enter"
+        },
+        "Gameplay": {
+                "MoveForward": "W",
+                "MoveLeft": "A",
+                "MoveBackward": "S",
+                "MoveRight": "D",
+                "OpenInventory": "I"
+        }
 }
