@@ -10,7 +10,7 @@ Description: This file defines the user input handler class which is responsible
 #include "priorityQueueElement.hpp"
 #include "singleton.hpp"
 
-namespace UserInputHandler
+namespace UserInput
 {
         // User input handler class
         class UserInputHandler : public Tool::Singleton<UserInputHandler>
@@ -19,6 +19,8 @@ namespace UserInputHandler
         // User input
                 void waitForUserInput();                                        // Wait for user input
         private: // Methods
+        // Constructor
+                UserInputHandler();                                             // Constructor
         // User input
                 void processUserInput();                                        // Process user input (validate, parse and create command)
                 bool validateUserInput();                                       // Validate user input
