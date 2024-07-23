@@ -18,17 +18,4 @@ namespace UserInput
         {
                 // TODO: Implement
         }
-
-        /*
-        Constructor.
-        */
-        UserInputHandler::UserInputHandler()
-        {
-                // Log the creation of the user input handler instance
-                LOG_INFO("User input handler instance created.");
-
-                // Request a thread for user input handling
-                ThreadManager::ThreadManager::getInstance().requestThread(
-                        &UserInputHandler::waitForUserInput, this);
-        }
 }
