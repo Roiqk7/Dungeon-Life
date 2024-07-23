@@ -29,7 +29,7 @@ namespace Tool
         // Destructor
                 ~PriorityQueue() = default;                                     // Clean up the priority queue
         // Element handling
-                void push(const pPriorityQueueElement& element);                // Push an element to the queue
+                void push(pPriorityQueueElement element);                       // Push an element to the queue
                 pPriorityQueueElement pop();                                    // Pop an element from the queue
                 bool empty() const;                                             // Check if the queue is empty
         private: // Methods

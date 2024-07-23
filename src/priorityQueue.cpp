@@ -20,7 +20,7 @@ namespace Tool
 
         @param element The element to push.
         */
-        void PriorityQueue::push(const pPriorityQueueElement& element)
+        void PriorityQueue::push(pPriorityQueueElement element)
         {
                 // Check the multi-threaded flag
                 if (ThreadManager::ThreadManager::getInstance().multiThreaded)
