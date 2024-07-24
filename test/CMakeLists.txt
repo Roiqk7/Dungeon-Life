@@ -1,4 +1,10 @@
+# Date: 24/07/2024
+#
+# Description: This CMakeLists.txt file is used to build the test executable
+# for the project.
+#
 # Note: This is not intended to be a standalone CMakeLists.txt file.
+#
 # To build the tests, go into the project's build directory and run:
 # ./scripts/build.sh test
 

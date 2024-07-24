@@ -1,3 +1,10 @@
+# Date: 24/07/2024
+#
+# Description: This CMakeLists.txt file is used to build the project.
+#
+# To build the project, go into the project's directory and run:
+# ./scripts/build.sh [dev] [test]
+
 # Specify the minimum version for CMake and the project's name
 cmake_minimum_required(VERSION 3.10)
 project(DungeonLife VERSION 1.0)
