@@ -28,11 +28,11 @@ do
         # Check the argument(s) passed to the script
         case $arg in
                 dev)
-                        echo "Configuring the project with CMake in development mode..."
+                        echo "Development mode enabled."
                         cmake_flags+="-DDEVELOPMENT=ON "
                         ;;
                 test)
-                        echo "Configuring the project with CMake for testing..."
+                        echo "Testing enabled."
                         cmake_flags+="-DTEST=ON "
                         ;;
                 *)
