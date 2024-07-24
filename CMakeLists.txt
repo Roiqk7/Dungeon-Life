@@ -28,13 +28,15 @@ add_executable(DungeonLife src/dungeonLife.cpp)
 target_include_directories(DungeonLife PUBLIC "include/")
 
 # External dependencies
+# Include the findAndCheckDependency function
+include(${CMAKE_SOURCE_DIR}/cmake/findAndCheckDependency.cmake)
 # Add SDL2
-find_package(SDL2 REQUIRED)
+find_and_check_dependency(PACKAGE SDL2)
 target_include_directories(DungeonLife PRIVATE ${SDL2_INCLUDE_DIRS})
 target_link_libraries(DungeonLife PRIVATE ${SDL2_LIBRARIES})
 
 # Add JsonCpp
-find_library(JSONCPP_LIBRARY jsoncpp)
+find_and_check_dependency(LIBRARY jsoncpp)
 target_include_directories(DungeonLife PRIVATE ${JSONCPP_INCLUDE_DIR})
 target_link_libraries(DungeonLife PRIVATE ${JSONCPP_LIBRARY})
 
@@ -47,7 +49,7 @@ target_sources(DungeonLife PRIVATE ${PROJECT_SOURCES})
 # Conditionally include spdlog in development mode
 if(DEVELOPMENT)
         # Add spdlog
-        find_package(spdlog REQUIRED)
+        find_and_check_dependency(PACKAGE spdlog)
         target_link_libraries(DungeonLife PRIVATE spdlog::spdlog)
         # Define DEVELOPMENT preprocessor macro
         target_compile_definitions(DungeonLife PRIVATE DEVELOPMENT=1)

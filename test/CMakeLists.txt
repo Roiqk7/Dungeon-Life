@@ -21,8 +21,11 @@ add_executable(Test ${TEST_SOURCES})
 # Define TEST preprocessor macro
 target_compile_definitions(Test PRIVATE TEST=1)
 
+# External dependencies
+# Include the findAndCheckDependency function
+include(${CMAKE_SOURCE_DIR}/cmake/findAndCheckDependency.cmake)
 # Find and include the Google Test package
-find_package(GTest REQUIRED)
+find_and_check_dependency(GTest)
 
 # Link the Test executable with the necessary libraries
 target_link_libraries(Test PRIVATE ${SDL2_LIBRARIES} ${JSONCPP_LIBRARY} GTest::GTest GTest::Main spdlog::spdlog)
