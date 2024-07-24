@@ -49,22 +49,5 @@ endif()
 # Conditionally build tests
 if(TEST)
         enable_testing()
-
-        # Automatically include all test source files from the test directory
-        file(GLOB_RECURSE TEST_SOURCES "test/*.cpp")
-
-        # Define the test executable "Test" and specify the test source files
-        add_executable(Test ${TEST_SOURCES})
-
-        # Define TEST preprocessor macro
-        target_compile_definitions(Test PRIVATE TEST=1)
-
-        # Find and include the Google Test package
-        find_package(GTest REQUIRED)
-
-        # Link the Test executable with the necessary libraries
-        target_link_libraries(Test PRIVATE ${SDL2_LIBRARIES} ${JSONCPP_LIBRARY} GTest::GTest GTest::Main spdlog::spdlog)
-
-        # Add the test to CMake's testing framework
-        add_test(NAME Test COMMAND Test)
+        add_subdirectory(test)
 endif()
