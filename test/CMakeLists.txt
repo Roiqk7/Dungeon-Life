@@ -2,8 +2,9 @@
 # To build the tests, go into the project's build directory and run:
 # ./scripts/build.sh test
 
-# Include the header files from the include directory
+# Include the header files from the main include directory and test include directory
 include_directories(${CMAKE_SOURCE_DIR}/include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 # Automatically include all test source files from the test directory
 file(GLOB_RECURSE TEST_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp")
