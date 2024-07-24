@@ -14,7 +14,7 @@ message(STATUS "Development mode: ${DEVELOPMENT}")
 option(TEST "Build tests" OFF)
 message(STATUS "Build tests: ${TEST}")
 
-# Add the executable
+# Add the main executable
 add_executable(DungeonLife src/dungeonLife.cpp)
 
 # Include directories
@@ -56,11 +56,14 @@ if(TEST)
         # Define the test executable "Test" and specify the test source files
         add_executable(Test ${TEST_SOURCES})
 
+        # Define TEST preprocessor macro
+        target_compile_definitions(Test PRIVATE TEST=1)
+
         # Find and include the Google Test package
         find_package(GTest REQUIRED)
 
-        # Link the "Test" executable with the necessary libraries
-        target_link_libraries(Test PRIVATE ${SDL2_LIBRARIES} ${JSONCPP_LIBRARY} spdlog::spdlog GTest::GTest GTest::Main)
+        # Link the Test executable with the necessary libraries
+        target_link_libraries(Test PRIVATE ${SDL2_LIBRARIES} ${JSONCPP_LIBRARY} GTest::GTest GTest::Main spdlog::spdlog)
 
         # Add the test to CMake's testing framework
         add_test(NAME Test COMMAND Test)
