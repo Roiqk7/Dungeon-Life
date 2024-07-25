@@ -30,8 +30,6 @@ echo "Starting backup of the Dungeon Life project..."
 
 # Use tar to create a gzipped archive of the project directory
 # --exclude-vcs ignores version control system directories
-# --exclude-caches-all ignores cache directories
 # --exclude-from reads patterns to ignore from .gitignore
-tar --exclude-vcs --exclude-caches-all --exclude-from='.gitignore' -czf "$BACKUP_FILEPATH" .
-
+tar --exclude-vcs --exclude-from='.gitignore' -czf "$BACKUP_FILEPATH" .
 echo "Backup completed: $BACKUP_FILEPATH"
