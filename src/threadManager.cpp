@@ -59,7 +59,7 @@ namespace ThreadManager
                 if (!m_shutDown)
                 {
                         // Check if the number of threads is less than the maximum
-                        // Note: We add 1 as it represents the main thread
+                        // Note: We add 1 to account for the main thread
                         if (m_threads.size() + 1 <= m_maxThreads)
                         {
                                 // Create a new thread
