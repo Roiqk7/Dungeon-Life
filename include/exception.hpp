@@ -14,7 +14,7 @@ Description: This file contains the exception class which is used to handle exce
 
 #ifdef DEVELOPMENT
 #include <spdlog/spdlog.h>
-#endif
+#endif // DEVELOPMENT
 
 namespace Exception
 {

@@ -11,7 +11,7 @@ int main()
 {
         #ifdef DEVELOPMENT
         SET_LOG_LEVEL_DEBUG();
-        #endif
+        #endif // DEVELOPMENT
 
         // Create the application object
         Application::Application application;

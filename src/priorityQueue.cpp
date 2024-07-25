@@ -15,7 +15,7 @@ Description: This file implements the priority queue class template which is res
 
 #ifdef DEVELOPMENT
 #include <cassert>
-#endif
+#endif // DEVELOPMENT
 
 namespace Tool
 {
@@ -26,9 +26,15 @@ namespace Tool
         */
         void PriorityQueue::push(pPriorityQueueElement element)
         {
-                #ifdef DEVELOPMENT
-                assert(element != nullptr);
-                #endif
+                // Validate the element
+                if (!element)
+                {
+                        #ifdef DEVELOPMENT
+                        LOG_WARN("PriorityQueue::push: Tried to push a nullptr to the queue.");
+                        #endif
+
+                        return;
+                }
 
                 // Check the multi-threaded flag
                 if (ThreadManager::ThreadManager::getInstance().multiThreaded)
@@ -67,6 +73,11 @@ namespace Tool
                         // Check if the queue is not empty
                         if (!q.empty())
                         {
+                                #ifdef DEVELOPMENT
+                                // Note: This should never happen
+                                assert(q.front() != nullptr);
+                                #endif // DEVELOPMENT
+
                                 // Get the top element from the queue
                                 pPriorityQueueElement element = std::move(q.front());
 
@@ -125,8 +136,9 @@ namespace Tool
                 const size_t index = convertedSize - convertedPriority;
 
                 #ifdef DEVELOPMENT
+                // Validate the index
                 assert(index < convertedSize);
-                #endif
+                #endif // DEVELOPMENT
 
                 // Return the index of the priority in the queue
                 return index;

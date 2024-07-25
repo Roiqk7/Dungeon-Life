@@ -6,10 +6,6 @@ Description: This file implements the handler base class from which other single
 
 #include "../include/handler.hpp"
 
-#ifdef DEVELOPMENT
-#include <cassert>
-#endif
-
 namespace Tool
 {
         /*
@@ -20,11 +16,6 @@ namespace Tool
         template<typename Derived>
         void Handler<Derived>::submit(Tool::pPriorityQueueElement task)
         {
-                // Check if the task is valid
-                #ifdef DEVELOPMENT
-                assert(task != nullptr);
-                #endif
-
                 // Add the task to the queue
                 m_queue.push(task);
         }
