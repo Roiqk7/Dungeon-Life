@@ -13,6 +13,10 @@ Description: This file implements the priority queue class template which is res
 #include "../include/priorityQueueElement.hpp"
 #include "../include/threadManager.hpp"
 
+#ifdef DEVELOPMENT
+#include <cassert>
+#endif
+
 namespace Tool
 {
         /*
@@ -22,6 +26,10 @@ namespace Tool
         */
         void PriorityQueue::push(pPriorityQueueElement element)
         {
+                #ifdef DEVELOPMENT
+                assert(element != nullptr);
+                #endif
+
                 // Check the multi-threaded flag
                 if (ThreadManager::ThreadManager::getInstance().multiThreaded)
                 {
@@ -112,8 +120,15 @@ namespace Tool
                 // Convert the Globals::Priority::Size to size_t
                 const size_t convertedSize = static_cast<size_t>(Globals::Priority::Size);
 
-                // Return the index of the priority in the queue
+                // Calculate the index of the priority
                 // Note: This means that the highest priority is at the front of the array
-                return static_cast<size_t>(convertedSize - convertedPriority);
+                const size_t index = convertedSize - convertedPriority;
+
+                #ifdef DEVELOPMENT
+                assert(index < convertedSize);
+                #endif
+
+                // Return the index of the priority in the queue
+                return index;
         }
 }
