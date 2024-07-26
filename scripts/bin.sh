@@ -3,6 +3,9 @@
 # Exit immediately if a command exits with a non-zero status.
 set -e
 
+# Define red color code
+RED='\033[0;31m'
+
 echo "Converting JSON files to binary..."
 
 # Define the directory containing the JSON files and the output directory for binary files
@@ -20,7 +23,7 @@ fi
 
 # Ensure the script is run from the correct directory
 if [ ! -d "$JSON_DIR" ] || [ ! -d "$BIN_DIR" ] || [ ! -f "$CONVERT_SCRIPT" ]; then
-        echo "[Error] Make sure to run this script from the project directory where $JSON_DIR, $BIN_DIR, and $CONVERT_SCRIPT exist."
+        echo "${RED}[Error] Make sure to run this script from the project directory where $JSON_DIR, $BIN_DIR, and $CONVERT_SCRIPT exist."
         # Check if the BIN_DIR was created earlier in this script and delete it if it exists
         if [ -d "$BIN_DIR" ]; then
                 echo "Removing $BIN_DIR directory due to incorrect script execution location..."

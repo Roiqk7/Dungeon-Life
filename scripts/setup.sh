@@ -3,6 +3,9 @@
 # Exit immediately if a command exits with a non-zero status.
 set -e
 
+# Define red color code
+RED='\033[0;31m'
+
 echo "Setting up the project..."
 
 # Function to check if Homebrew is installed and install it if it's not
@@ -37,5 +40,5 @@ if [ "${OS}" = "Darwin" ]; then
         # Install dependencies
         install_dependencies
 else
-        echo "[Error] This script is intended for MacOS users."
+        echo "${RED}[Error] This script is intended for MacOS users only."
 fi
