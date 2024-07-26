@@ -88,6 +88,23 @@ TEST(PriorityQueue, popElement)
 }
 
 /*
+Popping an element from an empty queue.
+
+Expected: The method should return nullptr if the queue is empty.
+*/
+TEST(PriorityQueue, popEmptyQueue)
+{
+        // Create a priority queue
+        Tool::PriorityQueue queue;
+
+        // Pop an element from the queue
+        Tool::pPriorityQueueElement poppedElement = queue.pop();
+
+        // Check if the popped element is nullptr
+        EXPECT_TRUE(poppedElement == nullptr);
+}
+
+/*
 Checking if the queue is empty.
 
 Expected: The method should return true if the queue is empty, false otherwise.
