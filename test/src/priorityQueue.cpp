@@ -15,10 +15,6 @@ Description: This file contains tests for the priority queue.
 #include "../../include/priorityQueue.hpp"
 #include "../../include/priorityQueueElement.hpp"
 
-#ifdef DEVELOPMENT
-#include <spdlog/spdlog.h>
-#endif // DEVELOPMENT
-
 /*
 Pushing an element to the queue.
 

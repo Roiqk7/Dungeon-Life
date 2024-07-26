@@ -16,10 +16,6 @@ Description: This file contains tests for the json and binary conversion tool.
 #include <string>
 #include "../include/globals.hpp"
 
-#ifdef DEVELOPMENT
-#include <spdlog/spdlog.h>
-#endif // DEVELOPMENT
-
 /*
 Test for creating a binary file from JSON data
 
