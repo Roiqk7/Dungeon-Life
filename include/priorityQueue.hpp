@@ -29,8 +29,8 @@ namespace Tool
         // Destructor
                 ~PriorityQueue() = default;                                     // Clean up the priority queue
         // Element handling
-                void push(pPriorityQueueElement element);                       // Push an element to the queue
-                pPriorityQueueElement pop();                                    // Pop an element from the queue
+                void push(pPriorityQueueElement element) noexcept;              // Push an element to the queue
+                pPriorityQueueElement pop() noexcept;                           // Pop an element from the queue
                 bool empty() const noexcept;                                    // Check if the queue is empty
         private: // Methods
                 size_t getPriorityIndex(Globals::Priority priority) const;      // Get the index of the priority in the queue

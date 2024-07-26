@@ -27,7 +27,7 @@ namespace Tool
 
         @param element The element to push.
         */
-        void PriorityQueue::push(pPriorityQueueElement element)
+        void PriorityQueue::push(pPriorityQueueElement element) noexcept
         {
                 // Validate the element
                 if (!element)
@@ -61,7 +61,7 @@ namespace Tool
 
         @return The element popped from the queue. If the queue is empty, a nullptr is returned.
         */
-        pPriorityQueueElement PriorityQueue::pop()
+        pPriorityQueueElement PriorityQueue::pop() noexcept
         {
                 // Check the multi-threaded flag
                 if (ThreadManager::ThreadManager::getInstance().multiThreaded)
@@ -80,10 +80,14 @@ namespace Tool
                                 // Note: This should never happen
                                 assert(q.front() != nullptr);
                                 #else // RELEASE
-                                // Throw an exception if the front element is a nullptr
+                                // Handle the nullptr
                                 if (q.front() == nullptr)
                                 {
-                                        throw Exception::Exception("PriorityQueue::pop: The front element is a nullptr.");
+                                        // Remove the nullptr from the queue
+                                        q.pop();
+
+                                        // Return a nullptr
+                                        return nullptr;
                                 }
                                 #endif // RELEASE
 
