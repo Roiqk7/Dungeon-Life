@@ -31,7 +31,7 @@ namespace Exception
                 #ifdef DEVELOPMENT
                 explicit Exception(const std::string& message,
                         spdlog::level::level_enum logLevel);                    // Constructor with message and log level (for development)
-                #endif
+                #endif // DEVELOPMENT
         // Methods
                 virtual const char* what() const noexcept override;
         protected: // Methods
