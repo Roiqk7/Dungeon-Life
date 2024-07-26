@@ -22,7 +22,7 @@ Description: This file contains tests for the priority queue.
 /*
 Pushing an element to the queue.
 
-Excepted: The method should push the element to the queue. Thus the queue
+Expected: The method should push the element to the queue. Thus the queue
 should not be empty.
 */
 TEST(PriorityQueue, pushElement)
@@ -44,7 +44,7 @@ TEST(PriorityQueue, pushElement)
 /*
 Pushing nullptr to the queue.
 
-Excepted: The method should not push the nullptr to the queue. Thus the queue
+Expected: The method should not push the nullptr to the queue. Thus the queue
 should remain empty.
 */
 TEST(PriorityQueue, pushNullptr)
@@ -62,7 +62,7 @@ TEST(PriorityQueue, pushNullptr)
 /*
 Popping an element from the queue.
 
-Excepted: The method should pop the element from the queue. The popped element
+Expected: The method should pop the element from the queue. The popped element
 should be the same as the element pushed to the queue.
 */
 TEST(PriorityQueue, popElement)
@@ -90,7 +90,7 @@ TEST(PriorityQueue, popElement)
 /*
 Checking if the queue is empty.
 
-Excepted: The method should return true if the queue is empty, false otherwise.
+Expected: The method should return true if the queue is empty, false otherwise.
 */
 TEST(PriorityQueue, emptyQueue)
 {
@@ -104,7 +104,7 @@ TEST(PriorityQueue, emptyQueue)
 /*
 Checking if the queue is not empty.
 
-Excepted: The method should return false if the queue is not empty, true otherwise.
+Expected: The method should return false if the queue is not empty, true otherwise.
 */
 TEST(PriorityQueue, notEmptyQueue)
 {
