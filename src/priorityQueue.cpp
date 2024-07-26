@@ -9,13 +9,16 @@ Description: This file implements the priority queue class template which is res
 #include <mutex>
 #include <queue>
 #include <vector>
+#include "../include/globals.hpp"
 #include "../include/priorityQueue.hpp"
 #include "../include/priorityQueueElement.hpp"
 #include "../include/threadManager.hpp"
 
 #ifdef DEVELOPMENT
 #include <cassert>
-#endif // DEVELOPMENT
+#else // RELEASE
+#include "../include/exception.hpp"
+#endif // RELEASE
 
 namespace Tool
 {
@@ -31,7 +34,7 @@ namespace Tool
                 {
                         #ifdef DEVELOPMENT
                         LOG_WARN("PriorityQueue::push: Tried to push a nullptr to the queue.");
-                        #endif
+                        #endif // DEVELOPMENT
 
                         return;
                 }
@@ -76,7 +79,13 @@ namespace Tool
                                 #ifdef DEVELOPMENT
                                 // Note: This should never happen
                                 assert(q.front() != nullptr);
-                                #endif // DEVELOPMENT
+                                #else // RELEASE
+                                // Throw an exception if the front element is a nullptr
+                                if (q.front() == nullptr)
+                                {
+                                        throw Exception::Exception("PriorityQueue::pop: The front element is a nullptr.");
+                                }
+                                #endif // RELEASE
 
                                 // Get the top element from the queue
                                 pPriorityQueueElement element = std::move(q.front());
@@ -138,7 +147,13 @@ namespace Tool
                 #ifdef DEVELOPMENT
                 // Validate the index
                 assert(index < convertedSize);
-                #endif // DEVELOPMENT
+                #else // RELEASE
+                // Throw an exception if the index is invalid
+                if (index >= convertedSize)
+                {
+                        throw Exception::Exception("PriorityQueue::getPriorityIndex: Out of range index.");
+                }
+                #endif // RELEASE
 
                 // Return the index of the priority in the queue
                 return index;
