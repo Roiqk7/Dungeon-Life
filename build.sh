@@ -17,3 +17,6 @@ chmod +x scripts/exePerm.sh
 
 # Build the binary files
 ./scripts/bin.sh
+
+# Run health test
+./scripts/test.sh
