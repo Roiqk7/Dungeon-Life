@@ -14,7 +14,7 @@ chmod +x scripts/exePerm.sh
 # Set up the project (install dependencies)
 ./scripts/setup.sh
 
-# Build the project with CMake and pass all the arguments to the script
+# Build the project with CMake
 ./scripts/build.sh "$@"
 
 # Build the binary files
