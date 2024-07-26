@@ -31,7 +31,7 @@ namespace Tool
         // Element handling
                 void push(pPriorityQueueElement element);                       // Push an element to the queue
                 pPriorityQueueElement pop();                                    // Pop an element from the queue
-                bool empty() const;                                             // Check if the queue is empty
+                bool empty() const noexcept;                                    // Check if the queue is empty
         private: // Methods
                 size_t getPriorityIndex(Globals::Priority priority) const;      // Get the index of the priority in the queue
         public: // Variables

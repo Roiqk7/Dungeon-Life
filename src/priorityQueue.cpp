@@ -107,7 +107,7 @@ namespace Tool
 
         @return True if the queue is empty, false otherwise.
         */
-        bool PriorityQueue::empty() const
+        bool PriorityQueue::empty() const noexcept
         {
                 // Iterate through the queue
                 for (const auto& q : queue)
