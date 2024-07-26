@@ -4,9 +4,6 @@ Date: 20/07/2024
 Description: This file contains tests for the json and binary conversion tool.
 */
 
-// Delete
-#define TEST
-
 #ifndef TEST
 #error "Tried to compile a test file without the TEST macro defined. Aborting compilation."
 #else
