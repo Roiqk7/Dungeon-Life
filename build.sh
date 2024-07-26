@@ -3,7 +3,7 @@
 # Exit immediately if a command exits with a non-zero status.
 set -e
 
-echo "Initializing the project..."
+echo "Building the project..."
 
 # Make all the scripts executable
 chmod +x scripts/exePerm.sh
