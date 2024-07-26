@@ -8,11 +8,16 @@ Description: This file contains the priority queue element class which is used t
 #define PRIORITY_QUEUE_ELEMENT_HPP
 
 #include <functional>
+#include <memory>
 #include <string>
 #include "globals.hpp"
 
 namespace Tool
 {
+
+        class PriorityQueueElement;                                             // Forward declaration (to make the alias work)
+        using pPriorityQueueElement = std::unique_ptr<PriorityQueueElement>;    // Alias for unique_ptr<PriorityQueueElement>
+
         /*
         Base class for priority queue elements
         */
@@ -20,6 +25,7 @@ namespace Tool
         {
         public: // Methods
         // Constructor
+                PriorityQueueElement(const std::string& name, Globals::Priority priority);
                 PriorityQueueElement(const std::string& name, Globals::Priority priority,
                         Globals::Type type, std::function<void()> callback);
         // Destructor
@@ -28,9 +34,12 @@ namespace Tool
                 const std::string& getName() const;                             // Get the name of the element
                 Globals::Priority getPriority() const;                          // Get the priority of the element
                 Globals::Type getType() const;                                  // Get the type of the element
+        // Clone
+                pPriorityQueueElement clone() const;                            // Clone the element
         // Callback execution
                 void execute();                                                 // Execute the callback function
         // Operators
+                bool operator==(const PriorityQueueElement& other) const;       // Equality operator
                 bool operator<(const PriorityQueueElement& other) const;        // Less than operator
         protected: // Variables
                 std::string m_name;                                             // Name of the element
@@ -38,8 +47,6 @@ namespace Tool
                 Globals::Type m_type;                                           // Type of the element
                 std::function<void()> m_callback;                               // Callback function to execute when the element is processed
         };
-
-        using pPriorityQueueElement = std::unique_ptr<PriorityQueueElement>;    // Alias for unique_ptr<PriorityQueueElement>
 
         /*
         Comparator for priority queue elements
