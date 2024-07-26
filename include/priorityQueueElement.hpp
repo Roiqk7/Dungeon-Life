@@ -25,9 +25,13 @@ namespace Tool
         {
         public: // Methods
         // Constructor
-                PriorityQueueElement(const std::string& name, Globals::Priority priority);
-                PriorityQueueElement(const std::string& name, Globals::Priority priority,
-                        Globals::Type type, std::function<void()> callback);
+                #ifdef TEST
+                PriorityQueueElement(const std::string& name,
+                        Globals::Priority priority);                            // Should be used only for testing
+                #endif // TEST
+                PriorityQueueElement(const std::string& name,
+                        Globals::Priority priority,
+                        Globals::Type type, std::function<void()> callback);    // Proper constructor
         // Destructor
                 virtual ~PriorityQueueElement() = default;
         // Getters
