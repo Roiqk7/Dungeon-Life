@@ -34,10 +34,8 @@ if [ ! -d "build" ]; then
 elif [ -z "$(ls -A build)" ]; then
         echo "[Error] The build directory is empty."
         build_success=0
-fi
-
 # Check if the project executable exists
-if [ ! -f "build/dungeonLife" ]; then
+elif [ ! -f "build/dungeonLife" ]; then
         echo "[Error] The project executable does not exist."
         build_success=0
 fi
