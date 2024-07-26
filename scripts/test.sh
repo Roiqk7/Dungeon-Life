@@ -40,11 +40,15 @@ elif [ ! -f "build/dungeonLife" ]; then
         build_success=0
 fi
 
+# Define color codes
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+
 # Check the build status flag and print the final status
 if [ $build_success -eq 1 ]; then
-        echo "Build was successful."
+        echo -e "${GREEN}Build was successful.${NC}"
 else
-        echo "Build failed."
+        echo -e "${RED}Build failed.${NC}"
 fi
 
 # Exit with the appropriate status code
