@@ -1,7 +1,7 @@
 /*
 Date: 18/07/2024
 
-Description: This file contains the main function which is the entry point of the program.
+Description: This file contains the main function.
 */
 
 #include "../include/application.hpp"
