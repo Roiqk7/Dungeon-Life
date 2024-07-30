@@ -76,13 +76,14 @@ namespace Application
                 bool shouldRun();                                               // Check if the application should run
         public: // Variables
                 static bool shouldClose;                                        // Flag to determine if the application should close
+                static Context context;                                         // The context of the application
         private: // Variables
                 HealthFlag healthFlag;                                          // Flag to determine the health of the application
-                Context context;                                                // Context of the application
         };
 
         // Static variable initialization
         bool Application::shouldClose = false;
+        Context Application::context = Context::System;
 }
 
 #endif // !APPLICATION_HPP
