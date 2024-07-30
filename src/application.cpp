@@ -28,6 +28,9 @@ namespace Application
 
                 // Check the health of the application
                 checkHealth();
+
+                // Run the application
+                run();
         }
 
         /*
