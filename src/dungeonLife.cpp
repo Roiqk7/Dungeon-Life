@@ -16,8 +16,5 @@ int main()
         // Create the application object
         Application::Application application;
 
-        // Run the application
-        application.run();
-
         return 0;
 }
