@@ -58,7 +58,9 @@ namespace UserInput
         }
 
         /*
-        Process user input.
+        Validate user input and create a command.
+
+        @param input: The user input to process.
         */
         void UserInputHandler::processUserInput(const UserInput& input)
         {
@@ -75,6 +77,8 @@ namespace UserInput
 
         /*
         Validate user input.
+
+        @param input: The user input to validate.
         */
         bool UserInputHandler::validateUserInput(const UserInput& input)
         {
@@ -84,6 +88,8 @@ namespace UserInput
 
         /*
         Parse user input and create a command.
+
+        @param input: The user input to parse.
         */
         Tool::pPriorityQueueElement UserInputHandler::parseUserInput(const UserInput& input)
         {
