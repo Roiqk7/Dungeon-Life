@@ -6,6 +6,7 @@ Description: This file contains the user input map class which is responsible fo
 
 #include "../include/application.hpp"
 #include "../include/invoker.hpp"
+#include "../include/priorityQueueElement.hpp"
 #include "../include/userInput.hpp"
 
 namespace UserInput
@@ -15,6 +16,9 @@ namespace UserInput
         */
         class UserInputMap
         {
-                // TODO: Implement the UserInputMap class
+        public: // Methods
+        // User Input Mapping
+                CommandSystem::Command mapUserInput(
+                        const UserInput& userInput);                            // Map user input to a command
         };
 }
