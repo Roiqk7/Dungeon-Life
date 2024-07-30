@@ -81,8 +81,7 @@ namespace UserInput
         */
         bool UserInputHandler::validateUserInput(const UserInput& input)
         {
-                // TODO: Implement this function
-                return false;
+                return m_userInputMap.validateUserInput(input);
         }
 
         /*
@@ -92,7 +91,6 @@ namespace UserInput
         */
         Tool::pPriorityQueueElement UserInputHandler::parseUserInput(const UserInput& input)
         {
-                // TODO: Implement this function
-                return nullptr;
+                return m_userInputMap.mapUserInput(input);
         }
 }
