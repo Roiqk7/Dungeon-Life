@@ -20,5 +20,7 @@ namespace UserInput
         // User Input Mapping
                 CommandSystem::Command mapUserInput(
                         const UserInput& userInput);                            // Map user input to a command
+                bool validateUserInput(
+                        const UserInput& userInput);                            // Validate user input
         };
 }
