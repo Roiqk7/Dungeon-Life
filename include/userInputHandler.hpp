@@ -10,6 +10,7 @@ Description: This file defines the user input handler class which is responsible
 #include "priorityQueueElement.hpp"
 #include "singleton.hpp"
 #include "userInput.hpp"
+#include "userInputMap.hpp"
 
 namespace UserInput
 {
@@ -25,6 +26,8 @@ namespace UserInput
                 bool validateUserInput(const UserInput& input);                 // Validate user input
                 Tool::pPriorityQueueElement parseUserInput(
                         const UserInput& input);                                // Parse user input and create a command
+        private: // Variables
+                UserInputMap m_userInputMap;                                    // User input map
         };
 }
 
