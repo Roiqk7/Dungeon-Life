@@ -29,7 +29,6 @@ Notes: x
 #define SET_LOG_LEVEL_ERROR() spdlog::set_level(spdlog::level::err)
 #define SET_LOG_LEVEL_CRITICAL() spdlog::set_level(spdlog::level::critical)
 #define SET_LOG_LEVEL_OFF() spdlog::set_level(spdlog::level::off)
-
 #else // RELEASE
 // Define macros as no-operation if not in development mode
 #define LOG_TRACE(...) (void)0
@@ -46,7 +45,6 @@ Notes: x
 #define SET_LOG_LEVEL_ERROR() (void)0
 #define SET_LOG_LEVEL_CRITICAL() (void)0
 #define SET_LOG_LEVEL_OFF() (void)0
-
 #endif // RELEASE
 
 namespace Globals
