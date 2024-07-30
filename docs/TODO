@@ -11,7 +11,8 @@
                 [x] User input handler
                 [x] Create json keybindings file
                 [ ] Create a parser for the keybindings to be read into a map
-                [ ] Create input to command map, based on the bin
+                        [ ] Hard code the map and perhaps in the future support custom keybindings
+                        [ ] Also InputHandler needs access to app context
         [ ] IMPLEMENT ALL .HPP FILES
         [ ] Finish the json/bin system
                 [x] Create a json to bin converter
