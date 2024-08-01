@@ -7,7 +7,7 @@
 
 # Specify the minimum version for CMake and the project's name
 cmake_minimum_required(VERSION 3.10)
-project(DungeonLife VERSION 1.0)
+project(DungeonLife)
 
 # Set the C++ standard
 set(CMAKE_CXX_STANDARD 17)
