@@ -5,6 +5,7 @@ Description: This file implements the user input map class which is responsible 
 */
 
 #include <algorithm>
+#include <memory>
 #include <vector>
 #include "../include/application.hpp"
 #include "../include/invoker.hpp"
@@ -16,15 +17,34 @@ namespace UserInput
 {
         /*
         Map user input to commands.
+
+        @param userInput The user input to map. (assumes valid input)
         */
         CommandSystem::Command UserInputMap::mapUserInput(
                 const UserInput& userInput)
         {
-                // TODO: Implement the mapping of user input to commands
+                // Map the user input to a command
+                // Universal key commands
+                switch (userInput.keyCode)
+                {
+                        case SDLK_q:
+                        {
+                                // Quit the application
+                                auto command = std::make_unique<Tool::PriorityQueueElement>(
+                                "Quit", Globals::Priority::High, Globals::Type::System, []()
+                                {
+                                        Application::Application::shouldClose = true;
+                                });
+
+                                return command;
+                        }
+                }
         }
 
         /*
         Validate user input.
+
+        @param userInput The user input to validate.
         */
         bool UserInputMap::validateUserInput(
                 const UserInput& userInput)
