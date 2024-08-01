@@ -47,7 +47,7 @@ namespace ThreadManager
         }
 
         /*
-        Request a thread.
+        Request a thread for a function.
 
         @param func The function to execute in the thread
         @param args The arguments to pass to the function
