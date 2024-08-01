@@ -23,14 +23,13 @@ namespace FrameHandler
         public: // Methods
         // Frame handling
                 void handleFrame();                                             // Handle the frame (sleep if necessary)
-                std::chrono::microseconds getDeltaTime();                       // Get the delta time
-                std::chrono::microseconds getRemainingTime();                   // Get the remaining time until the next frame
         private: // Methods
+        // Time handling
                 void calculateDeltaTime();                                      // Calculate the delta time
+                std::chrono::microseconds getRemainingTime();                   // Get the remaining time until the next frame
         private: // Variables
                 std::chrono::time_point<std::chrono::high_resolution_clock>
                         m_startTime;                                            // Reference time based on the initiation of the frame handler
-                std::chrono::microseconds m_deltaTime;                          // Delta time between frames
         };
 }
 
