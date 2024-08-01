@@ -108,4 +108,17 @@ namespace Tool
         {
                 return m_priority < other.m_priority;
         }
+
+        /*
+        Comparator for priority queue elements.
+
+        @param lhs Left-hand side element
+        @param rhs Right-hand side element
+
+        @return True if the left-hand side element is less than the right-hand side element, false otherwise
+        */
+        bool pPriorityQueueElementComparator::operator()(const pPriorityQueueElement& lhs, const pPriorityQueueElement& rhs) const
+        {
+                return *lhs < *rhs;
+        }
 }
