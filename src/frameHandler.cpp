@@ -7,6 +7,7 @@ Description: This file implements a singleton class which handles the frame rate
 #include <chrono>
 #include "../include/frameHandler.hpp"
 #include "../include/invoker.hpp"
+#include "../include/globals.hpp"
 
 namespace FrameHandler
 {
@@ -51,7 +52,10 @@ namespace FrameHandler
                 auto currentTime = std::chrono::high_resolution_clock::now();
 
                 // Calculate the remaining time
-                auto remainingTime = std::chrono::duration_cast<std::chrono::microseconds>(m_startTime + std::chrono::microseconds(1000000 / FPS) - currentTime);
+                auto remainingTime = std::chrono::duration_cast<std::chrono::microseconds>(
+                        m_startTime + std::chrono::microseconds(
+                        1000000 / Globals::Constants::FPS) - currentTime
+                );
 
                 // Check if the remaining time is negative
                 if (remainingTime.count() < 0)
