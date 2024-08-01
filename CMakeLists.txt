@@ -43,7 +43,7 @@ target_link_libraries(DungeonLife PRIVATE ${JSONCPP_LIBRARY})
 # Add source files
 file(GLOB_RECURSE PROJECT_SOURCES "src/*.cpp")
 # Exclude main file to avoid duplication
-list(REMOVE_ITEM PROJECT_SOURCES "src/dungeonLife.cpp")
+list(REMOVE_ITEM PROJECT_SOURCES "${CMAKE_SOURCE_DIR}/src/dungeonLife.cpp")
 target_sources(DungeonLife PRIVATE ${PROJECT_SOURCES})
 
 # Conditionally include spdlog in development mode
