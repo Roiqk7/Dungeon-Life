@@ -18,7 +18,7 @@ namespace Application
         And checks the health of the application.
         */
         Application::Application()
-                : healthFlag(HealthFlag::Healthy), context(Context::System)
+                : healthFlag(HealthFlag::Healthy)
         {
                 // Log the creation of the application instance
                 LOG_INFO("Application instance created.");
@@ -40,6 +40,9 @@ namespace Application
         {
                 // Set the health flag to shut down
                 healthFlag = HealthFlag::ShutDown;
+
+                // Close the application
+                close();
 
                 // Log the destruction of the application instance
                 LOG_INFO("Application instance destroyed.");
