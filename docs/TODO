@@ -10,9 +10,10 @@
         [x] Add basic user input (so you can close the app)
                 [x] User input handler
                 [x] Create json keybindings file
-                [ ] Create a parser for the keybindings to be read into a map
-                        [ ] Hard code the map and perhaps in the future support custom keybindings
-                        [ ] Also InputHandler needs access to app context
+                [x] Create a parser for the keybindings to be read into a map
+                        [x] Hard code the map and perhaps in the future support custom keybindings
+                        [x] Also InputHandler needs access to app context
+        [ ] Fix error (include handler and singleton in handler classes)
         [ ] IMPLEMENT ALL .HPP FILES
         [ ] Finish the json/bin system
                 [x] Create a json to bin converter
