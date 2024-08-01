@@ -9,6 +9,7 @@ Description: This file implements the user input handler class which is responsi
 #include "../include/globals.hpp"
 #include "../include/invoker.hpp"
 #include "../include/userInputHandler.hpp"
+#include "../include/userInputMap.hpp"
 
 namespace UserInput
 {
