@@ -73,6 +73,9 @@ namespace Application
         */
         void Application::init()
         {
+                // Initialize the user input handler
+                UserInput::UserInputHandler::getInstance();
+
                 // Request a thread for user input handling
                 ThreadManager::ThreadManager::getInstance().requestThread(
                         &UserInput::UserInputHandler::waitForUserInput, this);
