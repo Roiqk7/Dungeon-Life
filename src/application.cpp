@@ -149,11 +149,8 @@ namespace Application
                                 auto& frameHandler =
                                         FrameHandler::FrameHandler::getInstance();
 
-                                // Get the remaining time until the next frame
-                                auto remainingTime = frameHandler.getRemainingTime();
-
-                                // Process the commands in the given duration
-                                invoker.processForDuration(remainingTime);
+                                // Handle one frame of the gameplay
+                                frameHandler.handleFrame();
                         }
                         // We do not care about FPS so we can handle all the commands
                         // without any restrictions.
