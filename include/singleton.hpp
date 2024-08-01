@@ -25,22 +25,11 @@ namespace Tool
                 static Derived& getInstance();
                 Singleton(const Singleton&) = delete;
                 Singleton& operator=(const Singleton&) = delete;
-        // Management
-                static const std::vector<std::unique_ptr<Derived>>& getInstances();
         protected: // Methods
         // Constructor
                 Singleton() = default;
-        private: // Methods
-        // Management
-                static void registerInstance(std::unique_ptr<Derived> instance);
-        private: // Variables
-        // Management
-                static std::vector<std::unique_ptr<Derived>> m_instances;
         };
 
-        // Initialize the static vector
-        template<typename Derived>
-        std::vector<std::unique_ptr<Derived>> Singleton<Derived>::m_instances;
 }
 
 #endif // !SINGLETON_HPP
