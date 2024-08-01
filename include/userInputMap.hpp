@@ -4,6 +4,9 @@ Date: 30/07/2024
 Description: This file contains the user input map class which is responsible for mapping user input to commands.
 */
 
+#ifndef USER_INPUT_MAP_HPP
+#define USER_INPUT_MAP_HPP
+
 #include <SDL2/SDL.h>
 #include <vector>
 #include "application.hpp"
@@ -33,3 +36,5 @@ namespace UserInput
                 };
         };
 }
+
+#endif // !USER_INPUT_MAP_HPP
