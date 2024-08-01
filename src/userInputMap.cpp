@@ -29,6 +29,8 @@ namespace UserInput
                 {
                         case SDLK_q:
                         {
+                                // TODO: Create a command factory to create commands
+
                                 // Quit the application
                                 auto command = std::make_unique<Tool::PriorityQueueElement>(
                                 "Quit", Globals::Priority::High, Globals::Type::System, []()
@@ -39,6 +41,15 @@ namespace UserInput
                                 return command;
                         }
                 }
+
+                // Null command
+                auto command = std::make_unique<Tool::PriorityQueueElement>(
+                        "Null", Globals::Priority::Regular, Globals::Type::System, []()
+                        {
+                                // Do nothing
+                        });
+
+                return command;
         }
 
         /*
